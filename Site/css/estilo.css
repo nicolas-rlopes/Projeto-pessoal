@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Marcellus+SC");
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black;
+  font-family: 'Marcellus SC', serif;
+  color: rgb(240, 230, 210);
+  background-color: #091428;
 }
 
 :root {
@@ -15,74 +16,138 @@ body {
   --tamanho-footer: 65px;
 }
 
+.navbar {
+  font-size: 22px;
+  border-bottom: 2px solid #e2b249;
+}
+
 .container {
   display: flex;
-  width: 80%;
-  margin: auto;
-}
-
-.header {
-  height: var(--tamanho-header);
-  border-bottom: 2px solid #32b9cd;
-}
-
-.header .container {
+  flex-direction: row;
   justify-content: space-between;
+}
+
+.navbar .container {
+  height: 100px;
+  background-color:#091428;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 100px;
+  margin-left: 100px;
+}
+
+.logo img {
+  width: 185px;
+  height: 100px;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-evenly;
+}
+
+.nav ul{
+  list-style: none;
+  display: flex;
+  width: 450px;
+  justify-content: space-around;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(226, 178, 73);
+  text-shadow: 0px 0px 10px rgba(226, 178, 73, 0.715);
+}
+
+.banner {
+  height: fit-content;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row-reverse;
+  border-bottom: 2px solid #e2b249;
+}
+
+.banner img {
+  width: 100%;
   height: 100%;
 }
 
-.header a {
-  text-decoration: none;
-  color: #e3b062;
+.metade {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: #091428;
+  font-size: 30px;
+  padding: 0px 20px;
+  box-shadow: 0px 0px 10px rgba(226, 177, 73, 0.584);
+}
+
+.banner .titulo {
+  border-left: 2px solid #e2b249;
+  box-shadow: 0px 0px 10px rgba(226, 177, 73, 0.584);
+}
+
+.sobre {
+  box-shadow: 0px 0px 25px #e2b249;
+  background-color: #091428;
+}
+
+.conteudo {
+  display: flex;
+}
+
+.conteudo .metade {
+  font-size: 1em;
+}
+
+.conteudo img {
+  height: 400px;
+  width: 400px;
+  box-shadow: 0px 0px 5px black;
+  border-radius: 10px;
+}
+
+.separado {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.separado p {
+  width: 600px;
+}
+
+.separado ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.separado button {
+  background: none;
+  border: none;
+  font-family: 'Marcellus SC', serif;
+  color: rgb(226, 178, 73);
+  text-shadow: 0px 0px 10px rgba(226, 178, 73, 0.715);
+  cursor: pointer;
 }
 
 .agora {
-  font-weight: 800;
-}
-
-.navbar {
-  width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  color: #e3b062;
-}
-
-.titulo {
-  color: #32b9cd;
-  width: fit-content;
-  font-weight: 500;
-}
-
-.header h1 {
-  margin: 0;
-}
-
-/* BANNER */
-
-.banner {
-  height: var(--tamanho-banner);
-  color: white;
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
-}
-
-.banner .container {
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.banner .container p {
-  width: 50%;
-  margin: 0;
-  padding: 0;
-  font-size: 36px;
-}
-
-.banner .container span {
   font-weight: 800;
 }
 
@@ -121,11 +186,12 @@ body {
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
-  height: 150px;
-  color: #fff;
+  background-color: #e2b249;
+  height: fit-content;
+  color: #091428;
   display: flex;
   font-size: 15px;
+  justify-content: center;
 }
 
 .footer .container {
@@ -133,64 +199,82 @@ body {
   text-align: center;
 }
 
-.footer .container .version {
-  font-size: 12px;
+.footer .container h4 {
+  margin: 13px 0px;
 }
 
 /* LOGIN */
 
 .login {
   height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
   background-size: cover;
 }
 
 .login .container {
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 90%;
 }
 
 .card {
   width: 50%;
-  background-color: #e5e5e5;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: rgb(200, 170, 111);
+  text-shadow: 0px 0px 5px rgba(120, 91, 40, 0.578);
   flex-direction: column;
   height: fit-content;
-  padding: 20px 0;
 }
 
 .card h2 {
-  margin: 0;
   font-size: 30px;
+}
+
+.card-cadastro .formulario {
+  display: flex;
+  flex-direction: row;
 }
 
 .formulario {
   display: flex;
+  flex-direction: row;
   height: 90%;
-  width: 80%;
+  width: 100%;
   justify-content: space-around;
-  flex-direction: column;
 }
 
 .formulario span {
-  font-size: 15px;
-  font-weight: 800;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  width: 250px;
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  color: rgb(240, 230, 210);
+  background-color: rgb(30, 35, 40);
+  border: 3px solid rgb(121,93,32);
+  box-shadow: 0px 0px 5px black;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 0px;
   margin: 0;
+  text-decoration: none;
+  outline: none;
+}
+
+.formulario input:-webkit-autofill {
+  background-color: rgb(30, 35, 40);
+}
+
+input:autofill {
+  background-color: rgb(30, 35, 40);
 }
 
 .formulario select {
-  border: 2px solid #32b9cd;
+  border: 3px solid rgb(121,93,32);
   background-color: white;
   color: gray;
   height: 36px;
@@ -207,18 +291,24 @@ body {
 }
 
 .botao {
-  cursor: pointer;
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  color: #fff;
-  background-color: #e6005a;
-  width: 120px;
-  height: 30px;
+  font-family: 'Marcellus SC', serif;
+  font-weight: bold;
+  font-size: 30px;
+  color: #cbbe8f;
+  background-color: rgb(30, 35, 40);
+  border: 3px solid rgb(121,93,32);
+  box-shadow: 0px 0px 5px black;
+  width: fit-content;
+  height: fit-content;
   align-self: center;
-  margin-top: 20px;
+  margin-top: 50px;
+  padding: 10px 30px;
+}
+
+.botao:hover {
+  cursor: pointer;
+  background: rgba(206, 177, 114, 0.174);
+  box-shadow: 0 0px 3px 1px rgba(255,255,255, .2), 0 0px 10px 1px rgba(186, 157, 84, 0.255), 0 0px 3px 1px rgba(0,0,0,1);
 }
 
 .loading-div {
@@ -237,7 +327,7 @@ body {
 
 /* FORMULARIO */
 
-.alerta_erro{
+.alerta_erro {
   display: flex;
   justify-content: flex-end;
 }
@@ -254,7 +344,7 @@ body {
   margin-right: 10%;
 }
 
-.card_erro #mensagem_erro{
+.card_erro #mensagem_erro {
   font-weight: 500;
   font-size: 20px;
 }
@@ -264,17 +354,8 @@ body {
   font-weight: 600 !important;
 }
 
-.formulario {
-  display: flex;
-  flex-direction: column;
-}
-
 input {
-  margin-bottom: 10px;
-  border: 2px solid #32b9cd;
   padding: 10px;
-  text-align: center;
-  border-radius: 10px;
 }
 
 .btn {
@@ -310,7 +391,7 @@ input {
 
 .simulador .container {
   flex-direction: column;
-  overflow: scroll; 
+  overflow: scroll;
   height: var(--tamanho-simulador);
 }
 
@@ -354,9 +435,55 @@ input {
 }
 
 @keyframes bell {
-  0%   {transform: rotate(25deg)}
-  25%  {transform: rotate(-25deg)}
-  50%  {transform: rotate(25deg)}
-  75%  {transform: rotate(-25deg)}
-  100% {transform: rotate(25deg)}
+  0% {
+    transform: rotate(25deg)
+  }
+
+  25% {
+    transform: rotate(-25deg)
+  }
+
+  50% {
+    transform: rotate(25deg)
+  }
+
+  75% {
+    transform: rotate(-25deg)
+  }
+
+  100% {
+    transform: rotate(25deg)
+  }
+}
+
+/* QUIZ */
+
+.titulo_quiz {
+  text-align: center;
+}
+
+.caixa {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.quiz {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  width: fit-content;
+  padding: 20px;
+}
+
+.mapa {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.quiz img {
+  height: 300px;
+  width: 300px;
 }
