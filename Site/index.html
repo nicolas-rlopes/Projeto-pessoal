@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="css/estilo.css">
-    <link rel="stylesheet" href="imagens/">
 </head>
 
 <body>
@@ -38,18 +37,71 @@
     <div class="sobre">
         <div class="conteudo">
             <div class="metade">
-                <h1>Como funciona a sua gameplay</h1>
+                <div class="titulos">
+                    <div class="t1">
+                        <h1>Como funciona a sua gameplay</h1>  
+                    </div>
+                    <div class="t2">
+                        <h2>As 5 funções diferentes são conhecidas como:</h2>
+                    </div>
+                </div>
                 <div class="separado">
-                    <img src="https://s2-techtudo.glbimg.com/FvVp6C8s9wmFWC2YwdO096XlUXM=/0x0:2400x1708/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2018/K/y/nj1EsBR0ANgvEBN9BWvA/summoners-rift-update-map.png" alt="">
-                    <div>
-                        <p>Um jogo formado por 5 jogadores de cada lado com opções de 140 campeões para jogar</p>
-                        <ul>
-                            <li><button>Rota Superior/Top</button></li>
-                            <li><button>Selva/Jungle</button></li>
-                            <li><button>Rota do Meio/Mid</button></li>
-                            <li><button>Rota Inferior/ADC</button></li>
-                            <li><button>Suporte/SUP</button></li>
-                        </ul>
+                    <div class="lanes">
+                        <div id="mostrar">
+                            <div id="rotas">
+                                <ul>
+                                    <li><button onclick="topo()">Rota Superior/Top</button></li>
+                                    <li><button onclick="jungle()">Selva/Jungle</button></li>
+                                    <li><button onclick="mid()">Rota do Meio/Mid</button></li>
+                                    <li><button onclick="adc()">Rota Inferior/ADC</button></li>
+                                    <li><button onclick="sup()">Suporte/SUP</button></li>
+                                </ul>
+                                <div class="mapa_home">
+                                    <img src="https://s2-techtudo.glbimg.com/FvVp6C8s9wmFWC2YwdO096XlUXM=/0x0:2400x1708/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2018/K/y/nj1EsBR0ANgvEBN9BWvA/summoners-rift-update-map.png" alt="mapa ">
+                                </div>
+                                <div id="apareceu_lanes">
+                                    <div class="apareceu" id="div_top" style="display: none;">
+                                        <h3>ROTA SUPERIOR</h3>
+                                        <p>
+                                            Campeões na rota superior são os lutadores durões e solitários da equipe. O trabalho deles é proteger a própria rota e focar seu dano nos membros mais fortes da equipe inimiga.
+                                        </p>
+                                    </div>
+                                    <div class="apareceu" id="div_jungle" style="display: none;">
+                                        <h3>SELVA</h3>
+                                        <p>
+                                            Caçadores vivem pela caça. Espreitando entre as rotas com furtividade e habilidade ficam atentos aos monstros da selva mais importantes e avançam no momento que o oponente baixar a guarda.
+                                        </p>
+                                    </div>
+                                    <div class="apareceu" id="div_mid" style="display: none;">
+                                        <h3>ROTA DO MEIO</h3>
+                                        <p>
+                                            Campeões da rota do meio são aqueles que possuem alto dano explosivo e podem fazer de tudo, sejam sozinhos ou em equipe. Para eles, o combate é umadança perigosa, e nela devem sempre buscar oportunidades para superar seuoponente.
+                                        </p>
+                                    </div>
+                                    <div class="apareceu" id="div_adc" style="display: none;">
+                                        <h3>ROTA INFERIOR</h3>
+                                        <p>
+                                            Campeões da rota inferior são a fonte preciosa de dano de cada equipe e precisam no de até que acumulem ouro e experiência o suficiente para carregar toda a equipe até a vitória.
+                                        </p>
+                                    </div>
+                                    <div class="apareceu" id="div_sup" style="display: none;">
+                                        <h3>SUPORTE</h3>
+                                        <p>
+                                            Campeões Suporte são os guardiões da equipe. Eles ajudam a manter seus aliados vivos e focam primordialmente em armar abates, protegendo seu parceiro na rota inferior até que fique mais forte.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gameplay-geral">
+                        <div class="gameplay">
+                            <p>Um jogo formado por 5 jogadores de cada lado com opções de 140 campeões para jogar, com 5 funções diferentes para serem jogadas no mapa mais tradicional, conhecido como Summoner's Rift.</p>
+                            <p class="p1">Após entrar em uma partida 5x5 o objetivo principal será destruir o nexus
+                                inimigo, que está localizado no lado oposto da sua base, você deve defender e atacar ao mesmo tempo, protegendo as suas torres que atacam os seus inimigos e tentando derrubar as torres inimigas. </p>
+                            <p>Quem conseguir fazer esse processo até o final da melhor maneira e derrubar o NEXUS inimigo será o Vitorioso</p>
+                        </div>
+                        <div class="linha"></div>
                     </div>
                 </div>
             </div>
@@ -67,13 +119,55 @@
                 fuga aliquam!</p>
         </div>
     </div>
-    <div class="container">
-        <div class="footer">
-            <div>
-                <p>Saber mais</p>
-            </div>
+    <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
         </div>
     </div>
 </body>
 
 </html>
+
+<script>
+
+
+    function topo() {
+        div_top.style.display = `block`;
+        div_jungle.style.display = 'none';
+        div_mid.style.display = 'none';
+        div_adc.style.display = 'none';
+        div_sup.style.display = 'none';
+    }
+
+    function jungle() {
+        div_jungle.style.display = `block`;
+        div_top.style.display = 'none';
+        div_mid.style.display = 'none';
+        div_adc.style.display = 'none';
+        div_sup.style.display = 'none';
+    }
+
+    function mid() {
+        div_mid.style.display = `block`;
+        div_top.style.display = 'none';
+        div_jungle.style.display = 'none';
+        div_adc.style.display = 'none';
+        div_sup.style.display = 'none';
+    }
+
+    function adc() {
+        div_adc.style.display = `block`;
+        div_top.style.display = 'none';
+        div_jungle.style.display = 'none';
+        div_mid.style.display = 'none';
+        div_sup.style.display = 'none';
+    }
+
+    function sup() {
+        div_sup.style.display = `block`
+        div_top.style.display = 'none';
+        div_jungle.style.display = 'none';
+        div_mid.style.display = 'none';
+        div_adc.style.display = 'none';
+    }
+</script>
