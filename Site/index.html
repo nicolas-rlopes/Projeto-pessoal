@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="css/estilo.css">
+
 </head>
 
 <body>
@@ -17,6 +18,7 @@
             <div class="nav">
                 <ul>
                     <li class="agora"><a href="">Home</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
                     <li><a href="cadastro.html">Cadastro</a></li>
                     <li><a href="login.html">Login</a></li>
                 </ul>
@@ -57,7 +59,7 @@
                                     <li><button onclick="sup()">Suporte/SUP</button></li>
                                 </ul>
                                 <div class="mapa_home">
-                                    <img src="https://s2-techtudo.glbimg.com/FvVp6C8s9wmFWC2YwdO096XlUXM=/0x0:2400x1708/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2018/K/y/nj1EsBR0ANgvEBN9BWvA/summoners-rift-update-map.png" alt="mapa ">
+                                    <img src="css/imagens/summoners-rift-map.webp" alt="mapa ">
                                 </div>
                                 <div id="apareceu_lanes">
                                     <div class="apareceu" id="div_top" style="display: none;">
@@ -106,11 +108,89 @@
                 </div>
             </div>
         </div>
-        <div class="conteudo">
-            <h1>O que um jogar novo deve conhecer</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi tenetur quos pariatur laudantium, ea
-                rerum nulla doloribus aspernatur quo alias in aperiam dolore facere nemo velit? Cumque nulla beatae
-                dolore.</p>
+        <div class="introducao">
+            <div class="novo_jogador">
+                <h1>O que um jogador novo deve conhecer</h1>
+                <p>Ao entrar em uma partida de League of Legends que tem uma duração média de 35 minutos, temos diversas opções de modos de jogo apenas no mapa de Summoner's Rift, sendo eles <b class="destaque">Ranqueados</b> que valem pontos competitivos chamado de PDL e temos opções de banimentos de campeões, partidas <b class="destaque">Normais</b> que pelo nome já dizem que são para jogadores mais casuais com banimentos de campeões e outro <b class="destaque">Normal sem banimentos</b>.</p>
+                <div class="ranques">
+                    <div class="titulo">
+                        <h4>Ao jogar partidas Ranqueadas os jogadores se deparam com os seguintes ranques em ordem crescente</h4>
+                    </div>
+                    <div class="elos">
+                        <ul class="a">
+                            <li style="color: rgb(110, 77, 37); text-shadow: 0px 0px 3px rgb(110, 77, 37);">Ferro</li>
+                            <li style="color: rgb(151, 106, 52); text-shadow: 0px 0px 3px rgb(151, 106, 52);">Bronze</li>
+                            <li style="color: rgb(92, 88, 96); text-shadow: 0px 0px 3px rgb(92, 88, 96);">Prata</li>
+                            <li style="color: rgb(255, 215, 0); text-shadow: 0px 0px 3px rgb(255, 215, 0);">Ouro</li>
+                            <li style="color: rgb(30, 200, 163); text-shadow: 0px 0px 3px rgb(30, 200, 163);">Platina</li>
+                        </ul>
+                    </div>
+                    <div class="elos">
+                        <ul>
+                            <li style="color: rgb(30, 160, 40); text-shadow: 0px 0px 3px rgb(30, 160, 40);">Esmeralda</li>
+                            <li style="color: rgb(30, 166, 200); text-shadow: 0px 0px 3px rgb(30, 166, 200);">Diamante</li>
+                            <li style="color: rgb(146, 30, 200); text-shadow: 0px 0px 3px rgb(146, 30, 200);">Mestre</li>
+                            <li style="color: rgb(179, 28, 28); text-shadow: 0px 0px 3px rgb(179, 28, 28);">Grão-Mestre</li>
+                            <li class="challenger">Challenger</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="estrutura_selva">
+                <div class="estrutura">
+                    <h1>Estruturas</h1>
+                    <p>As torres que cada time possui 11 cada servem como pontos de defesa para impedir que os inimigos cheguem do seu Nexus, impedindo também o seu avanço contra a base inimiga, sendo assim, precisamos derrubar as torres inimigas para conseguir avançar e chegar no objetivo final</p>
+                    <p>Mas além das torres, existe uma estrutura chamada inibidor que serve como punição para caso você tenha deixado o inimigo chegar muito perto de sua base, onde as tropas inimiga <b class="destaque">"mais informações após o cadastro ;)"</b> estarão mais fortes e te punindo constantemente.</p>
+                    <p>A forma mais rápida para chegar ao Nexus inimigo seria destruindo 5 torres e 1 inibidor.</p>
+                </div>
+               
+                <div class="selva">
+                    <h1>Selva</h1>
+                    <p>A selva funciona em forma de campos, sendo espelhado com a parte do território inimigo.</p>
+                    <p>Cada campo possui um monstro que deve ser abatido para ganhar experiência e dinheiro, além desses campos outros objetivos que estão espalhados pela selva seriam os Dragões onde o primeiro nasce aos 5:00 de jogo e o Barão Na'Shor que nasce aos 20:00.</p>
+                    <div class="monstros">
+                        <div class="monstros_sub">
+                            <div>
+                                <button onclick="exibirKrugues()" id="mostrar_krugue" style="display: block;">Krugues</button>
+                                <button style="display: none; background-image: url(css/imagens/krugues.jpg); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #1e2328;" onclick="esconderKrugues()" id="voltar_krugue"></button>
+                            </div>
+                            <div>
+                                <button onclick="exibirRED()" id="mostrar_red" style="color: rgb(200, 29, 29); display: block;">Rubrivira RED</button>
+                                <button style="display: none; background-image: url(css/imagens/red.jpg); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #1e2328;" onclick="esconderRED()" id="voltar_red"></button>
+                            </div>
+                            <div><button onclick="exibirAcuaminas()" id="mostrar_acuamina" style="display: block;">Acuâminas</button></div>
+                            <button style="display: none; background-image: url(css/imagens/acuaminas.jpg); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #1e2328;" onclick="esconderAcuaminas()" id="voltar_acuamina"></button>
+                        </div>
+                        <div class="monstros_sub">
+                            <div>
+                                <button onclick="exibirLobos()" id="mostrar_lobos" style="display: block;">Lobos Trevoguari</button>
+                                <button style="display: none; background-image: url(css/imagens/lobos.jpg); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #1e2328;" onclick="esconderLobos()" id="voltar_lobos"></button>
+                            </div>
+                            <div>
+                                <button onclick="exibirBLUE()" id="mostrar_blue" style="color: rgb(29, 86, 200);">Azuporã  BLUE</button>
+                                <button style="display: none; background-image: url(css/imagens/blue.jpg); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #1e2328;" onclick="esconderBLUE()" id="voltar_blue"></button>
+                            </div>
+                            <div>
+                                <button onclick="exibirGrompe()" id="mostrar_grompe" style="display: block;">Grompe</button></div>
+                                <button style="display: none; background-image: url(css/imagens/grompe.jpg); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #1e2328;" onclick="esconderGrompe()" id="voltar_grompe"></button>
+                            </div>
+                        <div class="monstros_sub">
+                            <div>
+                                <button onclick="exibirAronguejo()" id="mostrar_aronguejo" style="display: block;">Aronguejo</button>
+                                <button style="display: none; background-image: url(css/imagens/aronguejo.jpg); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #1e2328;" onclick="esconderAronguejo()" id="voltar_aronguejo"></button>
+                            </div>
+                            <div>
+                                <button onclick="exibirDragao()" id="mostrar_dragao" style="display: block;">Dragão</button>
+                                <button style="display: none; background-image: url(css/imagens/dragao.jpg); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #1e2328;" onclick="esconderDragao()" id="voltar_dragao"></button>
+                            </div>
+                            <div>
+                                <button onclick="exibirBarao()" id="mostrar_barao" style="display: block;">Barão Na'Shor</button>
+                                <button style="display: none; background-image: url(css/imagens/barão-nashor.jpg); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #1e2328;" onclick="esconderBarao()" id="voltar_barao"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="conteudo">
             <h1>Curiosidades</h1>
@@ -170,4 +250,96 @@
         div_mid.style.display = 'none';
         div_adc.style.display = 'none';
     }
+
+    function exibirKrugues() {
+        mostrar_krugue.style.display = 'none';
+        voltar_krugue.style.display = 'block';
+    }
+
+    function esconderKrugues() {
+        mostrar_krugue.style.display = 'block';
+        voltar_krugue.style.display = 'none';
+    }
+
+    function exibirRED() {
+        mostrar_red.style.display = 'none';
+        voltar_red.style.display = 'block';
+    }
+
+    function esconderRED() {
+        mostrar_red.style.display = 'block';
+        voltar_red.style.display = 'none';
+    }
+
+    function exibirAcuaminas() {
+        mostrar_acuamina.style.display = 'none';
+        voltar_acuamina.style.display = 'block';
+    }
+
+    function esconderAcuaminas() {
+        mostrar_acuamina.style.display = 'block';
+        voltar_acuamina.style.display = 'none';
+    }
+
+    function exibirLobos() {
+        mostrar_lobos.style.display = 'none';
+        voltar_lobos.style.display = 'block';
+    }
+
+    function esconderLobos() {
+        mostrar_lobos.style.display = 'block';
+        voltar_lobos.style.display = 'none';
+    }
+
+    function exibirBLUE() {
+        mostrar_blue.style.display = 'none';
+        voltar_blue.style.display = 'block';
+    }
+
+    function esconderBLUE() {
+        mostrar_blue.style.display = 'block';
+        voltar_blue.style.display = 'none';
+    }
+
+    function exibirGrompe() {
+        mostrar_grompe.style.display = 'none';
+        voltar_grompe.style.display = 'block';
+    }
+
+    function esconderGrompe() {
+        mostrar_grompe.style.display = 'block';
+        voltar_grompe.style.display = 'none';
+    }
+
+    function exibirAronguejo() {
+        mostrar_aronguejo.style.display = 'none';
+        voltar_aronguejo.style.display = 'block';
+    }
+
+    function esconderAronguejo() {
+        mostrar_aronguejo.style.display = 'block';
+        voltar_aronguejo.style.display = 'none';
+    }
+
+    function exibirDragao() {
+        mostrar_dragao.style.display = 'none';
+        voltar_dragao.style.display = 'block';
+    }
+
+    function esconderDragao() {
+        mostrar_dragao.style.display = 'block';
+        voltar_dragao.style.display = 'none';
+    } 
+    
+    function exibirBarao() {
+        mostrar_barao.style.display = 'none';
+        voltar_barao.style.display = 'block';
+    }
+
+    function esconderBarao() {
+        mostrar_barao.style.display = 'block';
+        voltar_barao.style.display = 'none'
+    }
+
+
 </script>

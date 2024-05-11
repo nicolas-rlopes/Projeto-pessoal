@@ -16,6 +16,15 @@ body {
   --tamanho-footer: 65px;
 }
 
+.agora {
+  font-weight: 800;
+}
+
+.destaque {
+  color: #0397AB;
+  text-shadow: 0px 0px 2px black;
+}
+
 .navbar {
   font-size: 22px;
   border-bottom: 2px solid #e2b249;
@@ -67,7 +76,7 @@ a {
   text-shadow: 0px 0px 10px rgba(226, 178, 73, 0.715);
 }
 
-.metade {
+.banner .metade {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -256,8 +265,133 @@ a {
   width: fit-content;
 }
 
-.agora {
-  font-weight: 800;
+.introducao {
+  display: flex;
+  flex-direction: column;
+}
+
+.novo_jogador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.novo_jogador h1{
+  text-align: center;
+}
+
+.novo_jogador p {
+  text-align: center;
+  width: 60%;
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.ranques {
+  margin-top: 10px;
+  width: 45%;
+  border: 2px solid #795d20;
+  box-shadow: 0px 0px 5px #005A82;
+}
+
+.elos {
+  display: flex;
+  justify-content: start;
+}
+
+.ranques .titulo {
+  display: flex;
+  justify-content: center;
+}
+
+.ranques h4 {
+  text-align: center;
+  width: 520px;
+  font-size: 20px;
+  color: #e2b249;
+}
+
+.elos ul{
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 0;
+  font-size: 25px;
+  margin-top: 0;
+}
+
+.elos ul li {
+  -webkit-box-shadow: 0 6px 6px -6px #e2b249;
+  -moz-box-shadow: 0 6px 6px -6px #e2b249;
+  box-shadow: 0 6px 6px -6px #e2b249;
+
+}
+
+.elos a {
+  margin-right: 20px;
+}
+
+.challenger {
+  font-weight: bold;
+  background: linear-gradient(to right, #76afff, #dfe249);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.238);
+}
+
+.estrutura_selva {
+  margin-top: 50px;
+  display: flex;
+}
+
+
+.estrutura_selva h1{
+  letter-spacing: 2px;
+}
+
+.estrutura h1 {
+  color: #3C3C41;
+}
+
+
+.selva h1 {
+  color: rgb(39, 92, 51);
+}
+
+.estrutura {
+  width: 50%;
+  text-align: center;
+}
+
+.selva {
+  width: 50%;
+}
+
+.monstros {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.monstros_sub {
+  display: flex;
+  flex-direction: column;
+}
+
+.monstros_sub button {
+  background-color: #091428;
+  color: rgb(240, 230, 210);
+  border: 2px solid #795d20;
+  box-shadow: 0px 0px 5px rgba(226, 177, 73, 0.448);
+  cursor: pointer;
+  font-size: 30px;
+  display: flex;
+  width: 180px;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 10px 0px 20px 0px;
 }
 
 /* FOOTER */
@@ -340,14 +474,6 @@ a {
   margin: 0;
   text-decoration: none;
   outline: none;
-}
-
-.formulario input:-webkit-autofill {
-  background-color: rgb(30, 35, 40);
-}
-
-input:autofill {
-  background-color: rgb(30, 35, 40);
 }
 
 .formulario select {
