@@ -28,6 +28,7 @@ body {
 .navbar {
   font-size: 22px;
   border-bottom: 2px solid #e2b249;
+  position: sticky;
 }
 
 .container {
@@ -196,7 +197,7 @@ a {
   padding: 15px 15px 15px 0px;
 }
 
-.linha {
+.gameplay-geral .linha {
   height: 100%;
   border: 1px solid #e2b249;
   box-shadow: 0px 0px 5px #e2b249;
@@ -340,23 +341,36 @@ a {
   text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.238);
 }
 
+.estrutura {
+  display: flex;
+  flex-direction: column;
+}
+
+.div_estrutura {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .estrutura_selva {
   margin-top: 50px;
   display: flex;
 }
 
-
 .estrutura_selva h1{
   letter-spacing: 2px;
+  margin: 0;
+  font-size: 45px;
 }
 
 .estrutura h1 {
   color: #3C3C41;
+  text-shadow: 0px 0px 5px rgb(60, 60, 65, 0.512);
 }
-
 
 .selva h1 {
   color: rgb(39, 92, 51);
+  text-shadow: 0px 0px 5px rgba(39, 92, 51, 0.512);
 }
 
 .estrutura {
@@ -364,8 +378,72 @@ a {
   text-align: center;
 }
 
+.estrutura p {
+  font-size: 20px;
+  width: 650px;
+  margin-bottom: 0;
+}
+
+.p_estrutura {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  
+}
+
+/* LINHA */
+
+.estrutura_selva .linha {
+  border: 1px solid #e2b249;
+  box-shadow: 0px 0px 5px #e2b249;
+}
+
+/* ESTRUTURAS IMG */
+
+.torre_inibidor {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 50%;
+  width: 100%;
+  align-items: end;
+}
+
+.torre_inibidor h2 {
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+
+.torre_inibidor img{
+  height: 230px;
+  width: 230px;
+  border: 2px solid #795d20;
+}
+
+.nexus h2{
+  font-size: 40px;
+  letter-spacing: 2px;
+  text-shadow: 0px 0px 5px #11BCF2;
+}
+
+/*SELVA*/
+
 .selva {
   width: 50%;
+  text-align: center;
+}
+
+.selva p {
+  font-size: 20px;
+  width: 650px;
+}
+
+.p_selva {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
 }
 
 .monstros {
@@ -378,20 +456,75 @@ a {
   flex-direction: column;
 }
 
-.monstros_sub button {
+.monstros_sub span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   background-color: #091428;
   color: rgb(240, 230, 210);
   border: 2px solid #795d20;
   box-shadow: 0px 0px 5px rgba(226, 177, 73, 0.448);
   cursor: pointer;
   font-size: 30px;
-  display: flex;
   width: 180px;
   height: 150px;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   margin: 10px 0px 20px 0px;
+  transition: 0.4s ease-out;
+}
+
+/* MONSTROS IMAGENS */
+
+#mostrar_krugue:hover, #mostrar_red:hover, #mostrar_acuamina:hover, #mostrar_lobos:hover, #mostrar_blue:hover, #mostrar_grompe:hover, #mostrar_aronguejo:hover, #mostrar_dragao:hover, #mostrar_barao:hover {
+  font-size: 0;
+  background-size: contain; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  background-color: #1e2328;
+}
+
+#mostrar_krugue:hover {
+  background-image: url(imagens/krugues.jpg); 
+}
+
+#mostrar_red:hover {
+  background-image: url(imagens/red.jpg); 
+
+}
+
+#mostrar_acuamina:hover {
+  background-image: url(imagens/acuaminas.jpg); 
+
+}
+
+#mostrar_lobos:hover {
+  background-image: url(imagens/lobos.jpg); 
+
+}
+
+#mostrar_blue:hover {
+  background-image: url(imagens/blue.jpg); 
+
+}
+
+#mostrar_grompe:hover {
+  background-image: url(imagens/grompe.jpg); 
+
+}
+
+#mostrar_aronguejo:hover {
+  background-image: url(imagens/aronguejo.jpg); 
+
+}
+
+#mostrar_dragao:hover {
+  background-image: url(imagens/dragao.jpg); 
+
+}
+
+#mostrar_barao:hover {
+  background-image: url(imagens/barão-nashor.jpg); 
+
 }
 
 /* FOOTER */
@@ -630,10 +763,9 @@ input {
 .alarme-sino {
   width: 48px;
   height: 48px;
-  animation-name: bell;
-  animation-duration: 4s;
+  animation-name: bell;animation-duration: 4s;
   background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
-  background-size: cover;
+  background-size: cor;
   animation-iteration-count: infinite;
 }
 
