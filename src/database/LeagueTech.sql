@@ -1,20 +1,19 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql server
-*/
-
 CREATE DATABASE LeagueTech;
 
 USE LeagueTech;
 
-CREATE TABLE empresa (
+CREATE TABLE rota (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14)
+	funcao VARCHAR(50),
+	descricao varCHAR(100)
 );
+
+insert into rota (funcao, descricao) values 
+	('TOP', 'Lutador corpo a corpo TANK'),
+	('JUNGLER', 'Assassinos e lutadores com pouca vida'),
+	('MID', 'Magos, Assassinos e Lutadores'),
+	('ADC', 'Atiradores poderosos'),
+	('SUP', 'Tanques e Proteção');
 
 CREATE TABLE usuario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -55,5 +54,4 @@ create table medida (
 	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
 );
 
-insert into empresa (razao_social, cnpj) values ('Empresa 1', '00000000000000');
 insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);

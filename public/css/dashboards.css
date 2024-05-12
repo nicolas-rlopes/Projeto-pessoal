@@ -5,7 +5,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Marcellus SC', serif;
+  background-color: #1e2328;
 }
 
 .label-captura {
@@ -348,7 +349,8 @@ canvas {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 3px solid #32b9cd;
+  border-right: 3px solid rgb(226, 178, 73);
+  box-shadow: 0px 0px 5px rgb(226, 178, 73);
   background-color: #212124;
 }
 
@@ -387,17 +389,16 @@ canvas {
 .btn-nav {
   width: 40%;
   color: white;
-  background-color: #e6005a;
-  border-radius: 5px;
+  background-color: rgb(30, 35, 40);
+  border: 3px solid rgb(121,93,32);
   text-align: center;
   padding: 2% 5%;
 }
 
 .btn-nav-white {
   width: 40%;
-  background-color: white;
-  border: 3px solid #e6005a;
-  border-radius: 5px;
+  background-color: rgb(30, 35, 40);
+  border: 3px solid rgb(121,93,32);
   text-align: center;
   padding: 2% 5%;
 }

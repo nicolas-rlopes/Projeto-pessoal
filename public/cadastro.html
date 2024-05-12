@@ -47,9 +47,9 @@
                 <div class="formulario">
                     <div id="parte1">
                         <div class="campo">
-                            <span>Empresa</span>
-                            <select name="empresas" id="listaEmpresas">
-                                <option selected>Selecione uma empresa</option>
+                            <span>Funcao</span>
+                            <select name="rotas" id="listaFuncao">
+                                <option selected disabled>Selecione uma Função</option>
                             </select>
                         </div>
                         <div class="campo">
@@ -63,10 +63,6 @@
                     </div>
 
                     <div class="parte2">
-                        <div class="campo">
-                            <span>CPF</span>
-                            <input id="cpf_input" type="text" placeholder="CPF" />
-                        </div>
                         <div class="campo">
                             <span>Senha</span>
                             <input id="senha_input" type="password" placeholder="******" />
@@ -106,20 +102,18 @@
         // Agora vá para o método fetch logo abaixo
         var nomeVar = nome_input.value;
         var emailVar = email_input.value;
-        var cpfVar = cpf_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
-        var empresaVar = listaEmpresas.value
+        var rotaVar = listaFuncao.value
 
         var tamanhoNome = nomeVar.length;
 
         if (
             nomeVar == "" ||
             emailVar == "" ||
-            cpfVar == "" ||
             senhaVar == "" ||
             confirmacaoSenhaVar == "" ||
-            empresaVar == ""
+            rotaVar == ""
         ) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML =
@@ -158,14 +152,6 @@
             finalizarAguardar();
             return false;
         }
-        var tamanhoCPF = cpfVar.length;
-        if (tamanhoCPF < 11) {
-            cardErro.style.display = "block";
-            mensagem_erro.innerHTML = "O cpf deve conter 11 dígitos"
-
-            finalizarAguardar();
-            return false;
-        }
 
         else {
             setInterval(sumirMensagem, 5000);
@@ -183,8 +169,7 @@
                 nomeServer: nomeVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar,
-                empresaServer: empresaVar,
-                cpfServer: cpfVar
+                rotaServer: rotaVar,
             }),
         })
             .then(function (resposta) {
@@ -215,13 +200,13 @@
     }
 
     function listar() {
-        fetch("/empresas/listar", {
+        fetch("/rotas/listar", {
             method: "GET",
         })
             .then(function (resposta) {
-                resposta.json().then((empresas) => {
-                    empresas.forEach((empresa) => {
-                        listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+                resposta.json().then((rotas) => {
+                    rotas.forEach((rota) => {
+                        listaFuncao.innerHTML += `<option value='${rota.id}'>${rota.funcao}</option>`;
                     });
                 });
             })
