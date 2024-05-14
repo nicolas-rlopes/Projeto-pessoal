@@ -6,6 +6,7 @@ body {
   font-family: 'Marcellus SC', serif;
   color: rgb(240, 230, 210);
   background-color: #091428;
+  cursor: url(imagens/cursor.png), auto;
 }
 
 :root {
@@ -71,10 +72,28 @@ body {
   padding: 0;
 }
 
+.rotacao {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: width 2s, height 2s, transform 1s;
+}
+
+.rotacao:hover {
+  font-size: 25px;
+  transform: rotate(10deg);
+}
+
 .nav a {
   text-decoration: none;
   color: rgb(226, 178, 73);
   text-shadow: 0px 0px 10px rgba(226, 178, 73, 0.715);
+  cursor: url(imagens/cursor.png), auto;
+}
+
+.nav a:hover {
+  text-shadow: 0px 0px 5px black;
 }
 
 .banner .metade {
@@ -252,7 +271,7 @@ body {
   font-family: 'Marcellus SC', serif;
   color: rgb(226, 178, 73);
   text-shadow: 0px 0px 10px rgba(226, 178, 73, 0.715);
-  cursor: pointer;
+  cursor: url(imagens/cursor.png), auto;
 }
 
 #apareceu_lanes {
@@ -275,6 +294,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* background-image: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2M0MnZiaXpmNGxpdHNtZnpoN2ExdTV4aWUya20zeDloeDkyNHA0YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KouuVwfTuArOWeerLM/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%; */
 }
 
 .novo_jogador h1{
@@ -465,7 +488,7 @@ body {
   color: rgb(240, 230, 210);
   border: 2px solid #795d20;
   box-shadow: 0px 0px 5px rgba(226, 177, 73, 0.448);
-  cursor: pointer;
+  cursor: url(imagens/cursor.png), auto;
   font-size: 30px;
   width: 180px;
   height: 150px;
@@ -526,6 +549,11 @@ body {
   background-image: url(imagens/barão-nashor.jpg); 
 
 }
+
+.valores .conteudo {
+  flex-direction: column;
+  text-align: center;
+} 
 
 /* FOOTER */
 
@@ -642,7 +670,7 @@ body {
 }
 
 .botao:hover {
-  cursor: pointer;
+  cursor: url(imagens/cursor.png), auto;
   background: rgba(206, 177, 114, 0.174);
   box-shadow: 0 0px 3px 1px rgba(255,255,255, .2), 0 0px 10px 1px rgba(186, 157, 84, 0.255), 0 0px 3px 1px rgba(0,0,0,1);
 }
