@@ -5,10 +5,10 @@ body {
   padding: 0;
   font-family: 'Marcellus SC', serif;
   color: rgb(240, 230, 210);
-  background-color: #091428;
+  background-color: rgb(2, 14, 23);
   cursor: url(imagens/cursor.png), auto;
 }
-
+/*background-color: #020B10*/
 :root {
   --tamanho-header: 80px;
   --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
@@ -40,7 +40,7 @@ body {
 
 .navbar .container {
   height: 100px;
-  background-color:#091428;
+  background-color: rgb(2, 14, 23);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -96,13 +96,60 @@ body {
   text-shadow: 0px 0px 5px black;
 }
 
+.projeto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.projeto h1 {
+  width: fit-content;
+  text-shadow: 0px 0px 5px #005A82;
+  box-shadow: 0 8px 6px -6px #005A82;
+  font-size: 45px;
+}
+
+.objetivo_aprendizado {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  
+}
+
+.caixas_projeto_titulo h3{
+  margin-bottom: 20px;
+  font-size: 35px;
+}
+
+.caixas_projeto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 420px;
+  height: 420px;
+  margin-bottom: 50px;
+  background-image: url(https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt91649ca14bb231a9/5e1f896a522857549a291778/prestige_border.png?quality=80);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.caixas_projeto p {
+  align-items: stretch;
+  font-size: 18px;
+  width: 220px;
+  padding: 10px;
+}
+
 .banner .metade {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color: #091428;
+  background-color: rgb(2, 14, 23);
   font-size: 30px;
   padding: 0px 20px;
   box-shadow: 0px 0px 10px rgba(226, 177, 73, 0.584);
@@ -117,6 +164,7 @@ body {
   display: flex;
   flex-direction: row-reverse;
   border-bottom: 2px solid #e2b249;
+  border-top: 2px solid #e2b249;
 }
 
 .banner img {
@@ -131,7 +179,7 @@ body {
 
 .sobre {
   box-shadow: 0px 0px 25px #e2b249;
-  background-color: #091428;
+  background-color: rgb(2, 14, 23);
 }
 
 .conteudo .metade {
@@ -140,7 +188,7 @@ body {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color: #091428;
+  background-color: rgb(2, 14, 23);
   font-size: 30px;
   padding: 0px 20px 50px 20px;
 
@@ -294,10 +342,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-image: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2M0MnZiaXpmNGxpdHNtZnpoN2ExdTV4aWUya20zeDloeDkyNHA0YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KouuVwfTuArOWeerLM/giphy.gif');
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 100%; */
 }
 
 .novo_jogador h1{
@@ -316,8 +360,9 @@ body {
   width: 45%;
   border: 2px solid #795d20;
   box-shadow: 0px 0px 5px #005A82;
+  background: url(https://assets.contentstack.io/v3/assets/blt2ac872571a60ee02/blt7a72b1686eb3219a/618d75137ae6ce6fab413b1f/background-video-d-02.mp4);
 }
-
+/*background-image: linear-gradient(rgb(1, 10, 19), rgba(1, 10, 19, 0) 40%, rgba(1, 10, 19, 0) 60%, rgb(1, 10, 19));*/
 .elos {
   display: flex;
   justify-content: start;
@@ -484,7 +529,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #091428;
+  background-color: rgb(2, 14, 23);
   color: rgb(240, 230, 210);
   border: 2px solid #795d20;
   box-shadow: 0px 0px 5px rgba(226, 177, 73, 0.448);
@@ -912,4 +957,56 @@ input {
   width: 71%;
   justify-content: space-around;
   margin-bottom: 50px;
+}
+
+/* MINIGAME */
+
+#fundo {
+  height: 100vh;
+  background-color: #010A13;
+}
+
+#div_campeao {
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-color: white;
+  border: 2px solid black;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUf6Ts0Tw2N_J5xiqjICUCz_z0qSTzAJpoFbdkF6xXEQ&s);
+  background-size: cover;
+} 
+
+.minion {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#div_minion {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border: 2px solid black;
+  background-image: url(https://static.wikia.nocookie.net/leagueoflegends/images/9/96/Order_Minion_Melee_Render.png/revision/latest?cb=20200601045237);
+  background-size: cover;
+}
+
+#vida_minion {
+  position: absolute;
+  background-color: red;
+  height: 10px;
+}
+
+.minigame {
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: aquamarine;
+  height: 100vh;
+}
+
+.minigame img {
+  width: 300px;
+  height: 100%;
 }
