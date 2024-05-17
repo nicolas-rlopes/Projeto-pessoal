@@ -1,33 +1,92 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/estilo.css">
     <style>
-        *, html, body { 
-            margin: 0; 
+        *,
+        html,
+        body {
+            margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        #fundo {
+            height: 100vh;
+            background-color: #010A13;
+        }
+
+        #div_campeao {
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: white;
+            border: 2px solid black;
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUf6Ts0Tw2N_J5xiqjICUCz_z0qSTzAJpoFbdkF6xXEQ&s);
+            background-size: cover;
+            transition: 0.2s linear;
+        }
+
+        .minion {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #div_minion {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            border: 2px solid black;
+            background-image: url(https://static.wikia.nocookie.net/leagueoflegends/images/9/96/Order_Minion_Melee_Render.png/revision/latest?cb=20200601045237);
+            background-size: cover;
+            transition: 1.5s linear;
+        }
+
+        #vida_minion {
+            position: absolute;
+            background-color: red;
+            height: 10px;
+            transition: 1.5s linear;
+        }
+
+        .minigame {
+            display: flex;
+            flex-direction: row-reverse;
+            background-color: aquamarine;
+            height: 100vh;
+        }
+
+        .minigame img {
+            width: 300px;
+            height: 100%;
+        }
     </style>
 </head>
 <!-- "event" é um parâmetro que indica que sua função irá receber o evento disparado "ao pressionar uma tecla" -->
+
 <body onkeydown="mover_nuvem(event)" s>
     <div>
         <div class="minigame">
-            <div><img src="https://static.wikia.nocookie.net/leagueoflegends/images/a/a9/Summoners_Rift_Nexus_Obelisk.png/revision/latest?cb=20181208051246&path-prefix=pt-br" alt=""></div>
+            <div><img
+                    src="https://static.wikia.nocookie.net/leagueoflegends/images/a/a9/Summoners_Rift_Nexus_Obelisk.png/revision/latest?cb=20181208051246&path-prefix=pt-br"
+                    alt=""></div>
         </div>
         <div id="div_fundo"></div>
         <div id="div_campeao"></div>
-        
-            <div id="div_minion"></div>
-            <div id="vida_minion" style="width: 100px;"></div>
-        
+
+        <div id="div_minion"></div>
+        <div id="vida_minion" style="width: 100px;"></div>
+
     </div>
 </body>
+
 </html>
 
 <script>
@@ -40,7 +99,7 @@
     var vida_top_minion = 313;
     var vida_left_minion = 0;
     var unidade_medida = "px";
-    
+
 
     function mover_nuvem(event) { // "event" é o parâmetro/valor que será recebido pela função "mover_nuvem()" quando ela for invocada ao pressionar a tecla
         if (event.key != "ArrowDown" || event.key != "ArrowUp" || event.key != "ArrowLeft" || event.key != "ArrowRight") {
@@ -49,20 +108,20 @@
         // ABRA O CONSOLE AO EXECUTAR PARA ACOMPANHAR O EVENTO QUE ESTÁ SENDO DISPARADO!
         console.log("PARÂMETRO DO EVENTO DISPARADO: ", event); // exibindo o evento disparado no console (abra o console e veja os resultados)
 
-    console.log(div_campeao);
+        console.log(div_campeao);
 
         // no evento, temos qual tecla foi pressionada (atributo ".key")
-        if (event.key == "ArrowDown") { 
-            global_top_campeao += 10;
-        } else if (event.key == "ArrowUp") { 
-            global_top_campeao -= 10;
-        } else if (event.key == "ArrowLeft") { 
-            global_left_campeao -= 10;
-        } else if (event.key == "ArrowRight") { 
-            global_left_campeao += 10;
+        if (event.key == "ArrowDown") {
+            global_top_campeao += 30;
+        } else if (event.key == "ArrowUp") {
+            global_top_campeao -= 30;
+        } else if (event.key == "ArrowLeft") {
+            global_left_campeao -= 30;
+        } else if (event.key == "ArrowRight") {
+            global_left_campeao += 30;
         }
 
-        
+
         if (global_left_campeao < 0) {
             global_left_campeao = 0
         } else if (global_left_campeao >= 1273) {
@@ -78,7 +137,7 @@
             global_top_campeao = 0
         } else if (global_top_campeao >= 627) {
             global_top_campeao = 627
-        }        
+        }
 
         div_campeao.style.top = `${global_top_campeao}${unidade_medida}`; // atualiza a posição do topo da nuvem
         div_campeao.style.left = `${global_left_campeao}${unidade_medida}`; // atualiza a posição da esquerda da nuvem
@@ -95,12 +154,9 @@
         var bateuTopo = info_div_minion.top < info_div_campeao.bottom;
         var bateuAbaixo = info_div_minion.bottom > info_div_campeao.top;
 
-        //for (var tamanho = div_minion.style.width; tamanho <= bateuAbaixo || bateuDireita || bateuEsquerda || bateuTopo; tamanho++) {
+        var largura_atual = parseFloat(vida_minion.style.width);
 
-        //}
-        //info_div_minion.left < info_div_campeao.right || info_div_minion.right > info_div_campeao.left || info_div_minion.bottom > info_div_campeao.top || info_div_minion.top < info_div_campeao.bottom
-
-        if ((bateuDireita && info_div_campeao.left < info_div_minion.right) || (bateuEsquerda) || (bateuTopo) || (bateuAbaixo)) {
+        if (bateuDireita && bateuEsquerda && bateuTopo && bateuAbaixo) {
             var largura_atual = parseFloat(vida_minion.style.width);
             var valorDiminuindo = 10
             vida_minion.style.width = `${largura_atual - valorDiminuindo}px`
@@ -113,21 +169,26 @@
     function mover_sozinho() {
         global_left_minion += 10; // incrementa a distância do lado esquerdo em 1 
         vida_left_minion += 10;
-        div_minion.style.left = `${global_left_minion}${unidade_medida}`; // atualiza a posição da nuvem
+        div_minion.style.left = `${global_left_minion}${unidade_medida}`;
         vida_minion.style.left = `${vida_left_minion}${unidade_medida}`
-        
-        console.log(div_minion);
-        
 
-        if (global_left_minion > 450) {//1273
-            clearInterval(intervalo);
-            //global_left_minion = 0
+        console.log(div_minion);
+
+        if (vida_minion.style.width == 0) {
+            console.log('matou')
+            global_left_minion = 0;
+            vida_left_minion = 0;
+            vida_minion.style.width = 100
         }
-        
+        if (global_left_minion >= 1273) {
+            clearInterval(intervalo);
+            global_left_minion = 0;
+            vida_left_minion = 0;
+            vida_minion.style.width = 100
+        }
+
     }
 
-    var intervalo = setInterval(mover_sozinho, 100); 
-    // define um intervalo que invoca a função "mover_sozinho" a cada 100 milissegundos
+    var intervalo = setInterval(mover_sozinho, 1000);
 
-    
 </script>

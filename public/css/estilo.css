@@ -976,6 +976,7 @@ input {
   border: 2px solid black;
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUf6Ts0Tw2N_J5xiqjICUCz_z0qSTzAJpoFbdkF6xXEQ&s);
   background-size: cover;
+  transition: 0.2s linear;
 } 
 
 .minion {
@@ -991,12 +992,14 @@ input {
   border: 2px solid black;
   background-image: url(https://static.wikia.nocookie.net/leagueoflegends/images/9/96/Order_Minion_Melee_Render.png/revision/latest?cb=20200601045237);
   background-size: cover;
+  transition: 1.5s linear;
 }
 
 #vida_minion {
   position: absolute;
   background-color: red;
   height: 10px;
+  transition: 1.5s linear;
 }
 
 .minigame {
