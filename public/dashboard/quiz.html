@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="./../css/estilo.css">
 </head>
 
 <body>
@@ -13,7 +13,7 @@
     <div class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="css/imagens/LOGO-FINAL.png" alt="Logo da Riot com o meu nome">
+                <img src="./../css/imagens/LOGO-FINAL.png" alt="Logo da Riot com o meu nome">
             </div>
             <div class="nav">
                 <ul>
@@ -44,7 +44,7 @@
                     <h2>Questão 2</h2>
                     <h3>Quantas funções existem em uma equipe?</h3>
                     <div class="mapa">
-                        <img src="css/imagens/summoners-rift-map.webp" alt="">
+                        <img src="./../css/imagens/summoners-rift-map.webp" alt="">
                     </div>
                     <span><input type="radio" id="input_A2" name="questao2">A) 4 </span>
                     <span><input type="radio" id="input_B2" name="questao2">B) 5 </span>
@@ -148,7 +148,8 @@
     
 
     function finalizar() {
-        var acertos = 0
+        var acertosVar = 0
+       
 
         var respostaA1 = input_A1.checked;
         var respostaB1 = input_B1.checked;
@@ -202,53 +203,74 @@
         var respostaD10 = input_D10.checked;
 
         if (respostaA1) {
-            acertos++
-        }
+            acertosVar++
+        } 
 
         if (respostaB2) {
-            acertos++
-        }
+            acertosVar++
+        } 
 
         if (respostaC3) {
-            acertos++
-        }
+            acertosVar++
+        } 
 
         if (respostaC4) {
-            acertos++
-        }
+            acertosVar++
+        } 
 
         if (respostaA5) {
-            acertos++
-        }
+            acertosVar++
+        } 
 
         if (respostaD6) {
-            acertos++
-        }
+            acertosVar++
+        } 
 
         if (respostaC7) {
-            acertos++
-        }
+            acertosVar++
+        } 
 
         if (respostaA8) {
-            acertos++
-        }
+            acertosVar++
+        } 
 
         if (respostaB9) {
-            acertos++
-        }
+            acertosVar++
+        } 
 
         if (respostaC10) {
-            acertos++
-        }
+            acertosVar++
+        } 
 
-        if (acertos == 10) {
+        if (acertosVar == 10) {
             div_mensagem.innerHTML = `Você acertou todas as questões <b style="color: goldenrod;">CAMPEÃO</b>`
-        } else if (acertos >= 6){
+        } else if (acertosVar >= 6){
             div_mensagem.innerHTML = `Estamos quase lá Invocador!`
         } else {
             div_mensagem.innerHTML = `Vamos melhorar nesse conhecimento Invocador!`
         }
 
+        var errosVar = 10 - acertosVar;
+        var fkUsuarioVar = sessionStorage.ID_USUARIO;
         
+        if(acertosVar < 0 || acertosVar > 10){
+            alert('O quiz esta com menos de 0 ou mais de 10 acertos')
+        } else {
+            fetch("/usuarios/acrescentar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                acertosServer: acertosVar,
+                errosServer: errosVar,
+                fkUsuarioServer: fkUsuarioVar
+            }),
+        });
     }
+
+}
+        
 </script>

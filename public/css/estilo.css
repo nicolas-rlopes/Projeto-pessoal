@@ -741,21 +741,33 @@ body {
   justify-content: flex-end;
 }
 
+.erro {
+  display: flex;
+  flex-direction: column;
+}
+
 .card_erro {
   display: none;
-  background-color: #fff;
-  color: black;
+  text-align: center;
+  text-shadow: 0px 0px 5px #CDFAFA;
+  color: #CDFAFA;
   width: 230px;
   position: fixed;
-  border-radius: 4px;
-  border: #e6005a 3px solid;
+  
   padding: 10px;
-  margin-right: 10%;
+  margin: 10% 10% 0 0;
+}
+
+#erro_imagem img{
+  height: 50px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .card_erro #mensagem_erro {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .formulario .tipo_campo {
