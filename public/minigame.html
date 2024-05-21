@@ -14,76 +14,27 @@
             padding: 0;
             box-sizing: border-box;
         }
-
-        #fundo {
-            height: 100vh;
-            background-color: #010A13;
-        }
-
-        #div_campeao {
-            top: 0;
-            left: 0;
-            width: 100px;
-            height: 100px;
-            position: absolute;
-            background-color: white;
-            border: 2px solid black;
-            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUf6Ts0Tw2N_J5xiqjICUCz_z0qSTzAJpoFbdkF6xXEQ&s);
-            background-size: cover;
-            transition: 0.2s linear;
-        }
-
-        .minion {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        #div_minion {
-            width: 100px;
-            height: 100px;
-            position: absolute;
-            border: 2px solid black;
-            background-image: url(https://static.wikia.nocookie.net/leagueoflegends/images/9/96/Order_Minion_Melee_Render.png/revision/latest?cb=20200601045237);
-            background-size: cover;
-            transition: 1.5s linear;
-        }
-
-        #vida_minion {
-            position: absolute;
-            background-color: red;
-            height: 10px;
-            transition: 1.5s linear;
-        }
-
-        .minigame {
-            display: flex;
-            flex-direction: row-reverse;
-            background-color: aquamarine;
-            height: 100vh;
-        }
-
-        .minigame img {
-            width: 300px;
-            height: 100%;
-        }
     </style>
 </head>
 <!-- "event" é um parâmetro que indica que sua função irá receber o evento disparado "ao pressionar uma tecla" -->
 
-<body onkeydown="mover_nuvem(event)" s>
-    <div>
+<body onkeydown="mover_nuvem(event)">
+    <div class="jogo-fundo">
         <div class="minigame">
-            <div><img
-                    src="https://static.wikia.nocookie.net/leagueoflegends/images/a/a9/Summoners_Rift_Nexus_Obelisk.png/revision/latest?cb=20181208051246&path-prefix=pt-br"
-                    alt=""></div>
+            <div id="div_derrota" style="display: none;"> 
+                <img src="css/imagens/defeat.png" alt="">
+                <button onclick="voltar()" class="botao">Voltar ao Menu</button>
+            </div>
+            <div class="torre">
+                <img src="css/imagens/torre-minigame.webp" alt="">
+                <div id="vida_torre" style="width: 300px;"></div>
+            </div>
         </div>
         <div id="div_fundo"></div>
         <div id="div_campeao"></div>
 
         <div id="div_minion"></div>
         <div id="vida_minion" style="width: 100px;"></div>
-
     </div>
 </body>
 
@@ -139,12 +90,17 @@
             global_top_campeao = 627
         }
 
-        div_campeao.style.top = `${global_top_campeao}${unidade_medida}`; // atualiza a posição do topo da nuvem
-        div_campeao.style.left = `${global_left_campeao}${unidade_medida}`; // atualiza a posição da esquerda da nuvem
-        div_minion.style.top = `${global_top_minion}${unidade_medida}`;
+        div_campeao.style.top = `${global_top_campeao}${unidade_medida}`; // campeão
+        div_campeao.style.left = `${global_left_campeao}${unidade_medida}`; 
+
+        div_minion.style.top = `${global_top_minion}${unidade_medida}`; // minion
         div_minion.style.left = `${global_left_minion}${unidade_medida}`;
-        vida_minion.style.top = `${vida_top_minion}${unidade_medida}`;
+
+        vida_minion.style.top = `${vida_top_minion}${unidade_medida}`; // vida minion
         vida_minion.style.left = `${vida_left_minion}${unidade_medida}`;
+
+        vida_torre.style.top = `${vida_top_minion}${unidade_medida}`; //torre
+        vida_torre.style.left = `${vida_left_minion}${unidade_medida}`;
 
         var info_div_campeao = div_campeao.getBoundingClientRect();
         var info_div_minion = div_minion.getBoundingClientRect();
@@ -154,15 +110,12 @@
         var bateuTopo = info_div_minion.top < info_div_campeao.bottom;
         var bateuAbaixo = info_div_minion.bottom > info_div_campeao.top;
 
-        var largura_atual = parseFloat(vida_minion.style.width);
-
         if (bateuDireita && bateuEsquerda && bateuTopo && bateuAbaixo) {
             var largura_atual = parseFloat(vida_minion.style.width);
             var valorDiminuindo = 10
             vida_minion.style.width = `${largura_atual - valorDiminuindo}px`
+            
         }
-
-
     }
 
 
@@ -174,21 +127,51 @@
 
         console.log(div_minion);
 
-        if (vida_minion.style.width == 0) {
-            console.log('matou')
-            global_left_minion = 0;
-            vida_left_minion = 0;
-            vida_minion.style.width = 100
+        var posicao_aleatoria = Math.random() * 600
+        var aleatorio_inteiro = posicao_aleatoria.toFixed(0);
+
+        var largura_atual = parseFloat(vida_torre.style.width);
+        
+        if (largura_atual == 0) {
+            div_derrota.style.display = 'flex';
+            div_minion.style.display = 'none';
+            vida_minion.style.display = 'none';
+            div_campeao.style.display = 'none';
         }
         if (global_left_minion >= 1273) {
-            clearInterval(intervalo);
+            var dano = 75
+            
+            vida_torre.style.width = `${largura_atual - dano}px`
+
             global_left_minion = 0;
             vida_left_minion = 0;
-            vida_minion.style.width = 100
+            vida_minion.style.width = '100px';
+        }
+
+
+        if (vida_minion.style.width == '0px') {
+            clearInterval(intervalo);
+            
+            global_left_minion = 0;
+            vida_left_minion = 0;
+    
+            vida_top_minion = aleatorio_inteiro;
+            global_top_minion = aleatorio_inteiro;
+
+            
+
+            vida_minion.style.width = '100px';
+            setTimeout(function () {
+                intervalo = setInterval(mover_sozinho, 100);
+            }, 100)
         }
 
     }
 
-    var intervalo = setInterval(mover_sozinho, 1000);
+    var intervalo = setInterval(mover_sozinho, 100);
+
+    function voltar() {
+        window.location.href = 'index.html'
+    }
 
 </script>

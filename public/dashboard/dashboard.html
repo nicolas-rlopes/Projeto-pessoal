@@ -39,7 +39,7 @@
             </div>
             
 
-            <div class="btn-nav-white">
+            <div class="btn-nav">
                 <a href="./cards.html">
                     <h3>Aquários</h3>
                 </a>
@@ -51,15 +51,21 @@
 
             </div>
 
-            <div class="btn-nav-white">
+            <div class="btn-nav">
                 <a href="./mural.html">
                     <h3>Mural de Avisos</h3>
                 </a>
             </div>
 
-            <div class="btn-nav-white">
+            <div class="btn-nav">
                 <a href="./quiz.html">
-                    <h3>Mural de Avisos</h3>
+                    <h3>Quiz</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav">
+                <a href="./pos-cadastro.html">
+                    <h3>Inicial</h3>
                 </a>
             </div>
 
@@ -145,7 +151,7 @@
                 if (btnAtual.classList.contains("btn-pink")) {
                     btnAtual.classList.remove("btn-pink")
                 }
-                btnAtual.classList.add("btn-white")
+                btnAtual.classList.add("btn-nav")
             }
         }
 
@@ -156,7 +162,7 @@
 
         // alterando estilo do botão
         let btnExibir = document.getElementById(`btnAquario${idAquario}`)
-        btnExibir.classList.remove("btn-white")
+        btnExibir.classList.remove("btn-nav")
         btnExibir.classList.add("btn-pink")
     }
 

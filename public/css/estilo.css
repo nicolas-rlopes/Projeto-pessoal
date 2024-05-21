@@ -988,7 +988,7 @@ input {
   border: 2px solid black;
   background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUf6Ts0Tw2N_J5xiqjICUCz_z0qSTzAJpoFbdkF6xXEQ&s);
   background-size: cover;
-  transition: 0.2s linear;
+  
 } 
 
 .minion {
@@ -1001,27 +1001,71 @@ input {
   width: 100px;
   height: 100px;
   position: absolute;
-  border: 2px solid black;
   background-image: url(https://static.wikia.nocookie.net/leagueoflegends/images/9/96/Order_Minion_Melee_Render.png/revision/latest?cb=20200601045237);
   background-size: cover;
-  transition: 1.5s linear;
+  
 }
 
 #vida_minion {
   position: absolute;
+  border: 3px solid #010A13;
   background-color: red;
   height: 10px;
-  transition: 1.5s linear;
+  
 }
 
 .minigame {
   display: flex;
-  flex-direction: row-reverse;
-  background-color: aquamarine;
+  flex-direction: row;
+  background-image: url(imagens/lane.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
+  justify-content: flex-end;
 }
 
-.minigame img {
+.torre {
+  display: flex;
+  flex-direction: column-reverse;
+  background-image: url(imagens/torre);
+  background-repeat: no-repeat;
+}
+
+.torre img {
   width: 300px;
-  height: 100%;
+  height: 98%;
+}
+
+.minigame #vida_torre {
+  height: 15px;
+  background-color: red;
+  border: 3px solid #010A13;
+}
+
+#div_derrota{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20%;
+}
+
+#div_derrota img {
+  width: 65%;
+  height: 80%;
+}
+
+#div_derrota .botao {
+  margin-top: 0;
+  width: 300px;
+}
+
+#div_derrota .botao:hover {
+  transition: 1s ease;
+  width: 310px;
+  height: 75px;
+  background-color: #010A13;
+  box-shadow: 0px 0px 10px #010A13;
+  
 }

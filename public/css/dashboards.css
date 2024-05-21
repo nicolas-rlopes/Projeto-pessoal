@@ -117,10 +117,6 @@ body {
 }
 
 .dash {
-  width: 80%;
-  position: relative;
-  top: 0;
-  left: 20%;
   background-color: #161618;
   height: 100vh;
   overflow: auto;
@@ -330,26 +326,25 @@ canvas {
 
 .janela {
   display: flex;
-  /* width: 100vw; */
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .header-left a {
   text-decoration: none;
-  color: white;
+  color: #e2b249;
 }
 
 .header-left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  height: 100vh;
-  width: 20%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 3px solid rgb(226, 178, 73);
   box-shadow: 0px 0px 5px rgb(226, 178, 73);
   background-color: #212124;
 }
@@ -370,10 +365,23 @@ canvas {
   color: #32b9cd;
 }
 
+.usuario {
+  margin-right: 20px;
+}
+
 .hello {
   width: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hello img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 2px solid rgb(121, 93, 32);
+  box-shadow: 0px 0px 10px black;
 }
 
 .hello h3 {
@@ -387,26 +395,12 @@ canvas {
 }
 
 .btn-nav {
-  width: 40%;
-  color: white;
+  width: 100px;
+  color: #e2b249;
   background-color: rgb(30, 35, 40);
   border: 3px solid rgb(121,93,32);
   text-align: center;
-  padding: 2% 5%;
-}
-
-.btn-nav-white {
-  width: 40%;
-  background-color: rgb(30, 35, 40);
-  border: 3px solid rgb(121,93,32);
-  text-align: center;
-  padding: 2% 5%;
-}
-
-.btn-nav-white h3 {
-  color: #e6005a;
-  padding: 0;
-  margin: 0;
+  padding: 10px;
 }
 
 .btn-nav h3,
@@ -418,7 +412,7 @@ canvas {
 .btn-logout {
   margin: 0;
   padding: 0;
-  width: 20%;
+  width: 20px;
   background-color: #32b9cd;
   color: white;
   border-radius: 10px;
