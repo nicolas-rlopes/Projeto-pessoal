@@ -12,6 +12,10 @@ router.post("/acrescentar", function (req, res) {
     usuarioController.acrescentar(req, res);
 })
 
+router.post("/jogar", function (req, res) {
+    usuarioController.jogar(req, res);
+})
+
 router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });

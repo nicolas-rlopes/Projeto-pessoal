@@ -986,9 +986,9 @@ input {
   position: absolute;
   background-color: white;
   border: 2px solid black;
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUf6Ts0Tw2N_J5xiqjICUCz_z0qSTzAJpoFbdkF6xXEQ&s);
+  background-image: url(imagens/yasuo.jpeg);
   background-size: cover;
-  
+  transition: 0.1s linear;
 } 
 
 .minion {
@@ -1001,9 +1001,9 @@ input {
   width: 100px;
   height: 100px;
   position: absolute;
-  background-image: url(https://static.wikia.nocookie.net/leagueoflegends/images/9/96/Order_Minion_Melee_Render.png/revision/latest?cb=20200601045237);
+  background-image: url(imagens/Minion.webp);
   background-size: cover;
-  
+  transition: 0.1s linear;
 }
 
 #vida_minion {
@@ -1011,7 +1011,7 @@ input {
   border: 3px solid #010A13;
   background-color: red;
   height: 10px;
-  
+  transition: 0.1s linear;  
 }
 
 .minigame {
@@ -1068,4 +1068,11 @@ input {
   background-color: #010A13;
   box-shadow: 0px 0px 10px #010A13;
   
+}
+
+#encerrar {
+  position: fixed;
+  top: 0px; 
+  left: 0px;
+  margin-left: 50px;
 }

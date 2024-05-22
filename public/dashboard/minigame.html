@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css">
     <style>
         *,
         html,
@@ -21,12 +21,13 @@
 <body onkeydown="mover_nuvem(event)">
     <div class="jogo-fundo">
         <div class="minigame">
-            <div id="div_derrota" style="display: none;"> 
-                <img src="css/imagens/defeat.png" alt="">
+            <button onclick="finalizar()" class="botao" id="encerrar" style="display: none" ]>Encerrar Jogo</button>
+            <div id="div_derrota" style="display: none;">
+                <img src="../css/imagens/defeat.png" alt="">
                 <button onclick="voltar()" class="botao">Voltar ao Menu</button>
             </div>
             <div class="torre">
-                <img src="css/imagens/torre-minigame.webp" alt="">
+                <img src="../css/imagens/torre-minigame.webp" alt="">
                 <div id="vida_torre" style="width: 300px;"></div>
             </div>
         </div>
@@ -51,6 +52,8 @@
     var vida_left_minion = 0;
     var unidade_medida = "px";
 
+    var pontos = 0;
+
 
     function mover_nuvem(event) { // "event" é o parâmetro/valor que será recebido pela função "mover_nuvem()" quando ela for invocada ao pressionar a tecla
         if (event.key != "ArrowDown" || event.key != "ArrowUp" || event.key != "ArrowLeft" || event.key != "ArrowRight") {
@@ -72,6 +75,11 @@
             global_left_campeao += 30;
         }
 
+        if (event.key == "Escape") {
+            encerrar.style.display = 'block'
+        }
+
+        //for(var cont = 0; eventeevent.key == "Control";)
 
         if (global_left_campeao < 0) {
             global_left_campeao = 0
@@ -91,7 +99,7 @@
         }
 
         div_campeao.style.top = `${global_top_campeao}${unidade_medida}`; // campeão
-        div_campeao.style.left = `${global_left_campeao}${unidade_medida}`; 
+        div_campeao.style.left = `${global_left_campeao}${unidade_medida}`;
 
         div_minion.style.top = `${global_top_minion}${unidade_medida}`; // minion
         div_minion.style.left = `${global_left_minion}${unidade_medida}`;
@@ -114,7 +122,7 @@
             var largura_atual = parseFloat(vida_minion.style.width);
             var valorDiminuindo = 10
             vida_minion.style.width = `${largura_atual - valorDiminuindo}px`
-            
+
         }
     }
 
@@ -131,7 +139,7 @@
         var aleatorio_inteiro = posicao_aleatoria.toFixed(0);
 
         var largura_atual = parseFloat(vida_torre.style.width);
-        
+
         if (largura_atual == 0) {
             div_derrota.style.display = 'flex';
             div_minion.style.display = 'none';
@@ -140,25 +148,29 @@
         }
         if (global_left_minion >= 1273) {
             var dano = 75
-            
+
             vida_torre.style.width = `${largura_atual - dano}px`
 
             global_left_minion = 0;
             vida_left_minion = 0;
+
+            vida_top_minion = aleatorio_inteiro;
+            global_top_minion = aleatorio_inteiro;
+
             vida_minion.style.width = '100px';
         }
 
 
         if (vida_minion.style.width == '0px') {
             clearInterval(intervalo);
-            
+
             global_left_minion = 0;
             vida_left_minion = 0;
-    
+
             vida_top_minion = aleatorio_inteiro;
             global_top_minion = aleatorio_inteiro;
 
-            
+            pontos++
 
             vida_minion.style.width = '100px';
             setTimeout(function () {
@@ -171,7 +183,56 @@
     var intervalo = setInterval(mover_sozinho, 100);
 
     function voltar() {
-        window.location.href = 'index.html'
+
+        var pontuacaoVar = pontos
+        var fkUsuarioVar = sessionStorage.ID_USUARIO;
+
+        if (pontuacaoVar < 0) {
+            alert('O jogo esta começando com a pontuacao errada')
+        } else {
+            fetch("/usuarios/jogar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    pontuacaoServer: pontuacaoVar,
+                    fkUsuarioServer: fkUsuarioVar
+                }),
+            });
+        }
+
+        window.location.href = './pos-cadastro.html'
+    }
+
+
+    function finalizar() {
+
+        var pontuacaoVar = pontos
+        var fkUsuarioVar = sessionStorage.ID_USUARIO;
+
+        if (pontuacaoVar < 0) {
+            alert('O jogo esta começando com a pontuacao errada')
+        } else {
+            fetch("/usuarios/jogar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    pontuacaoServer: pontuacaoVar,
+                    fkUsuarioServer: fkUsuarioVar
+                }),
+            });
+        }
+
+        window.location.href = './pos-cadastro.html'
+
+
     }
 
 </script>
