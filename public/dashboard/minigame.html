@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mini Game</title>
     <link rel="stylesheet" href="../css/estilo.css">
     <style>
         *,
@@ -21,13 +21,16 @@
 <body onkeydown="mover_nuvem(event)">
     <div class="jogo-fundo">
         <div class="minigame">
-            <button onclick="finalizar()" class="botao" id="encerrar" style="display: none" ]>Encerrar Jogo</button>
+            <button onclick="finalizar()" class="botao" id="encerrar" style="display: none">Encerrar Jogo</button>
+            <div class="abatidos" id="abatidos">
+                <div id="div_verPontos" style="display: none;"></div>
+            </div>
             <div id="div_derrota" style="display: none;">
                 <img src="../css/imagens/defeat.png" alt="">
                 <button onclick="voltar()" class="botao">Voltar ao Menu</button>
             </div>
             <div class="torre">
-                <img src="../css/imagens/torre-minigame.webp" alt="">
+                <img src="../css/imagens/torre-minigame.webp" alt="" id="torre_imagem_jogo">
                 <div id="vida_torre" style="width: 300px;"></div>
             </div>
         </div>
@@ -36,23 +39,43 @@
 
         <div id="div_minion"></div>
         <div id="vida_minion" style="width: 100px;"></div>
+
+
+        <div id="div_minion2"></div>
+        <div id="vida_minion2" style="width: 100px;"></div>
     </div>
 </body>
 
 </html>
 
 <script>
+
     var vidaMinion = vida_minion.value;
+    var vidaMinion2 = vida_minion2.value;
+
     var global_top_campeao = 313; // distância atual entre o elemento e o topo da página
     var global_left_campeao = 500; // distância atual entre o elemento e a lateral esquerda da página
 
-    var global_top_minion = 313;
+    var global_top_minion = 413;
     var global_left_minion = 0;
-    var vida_top_minion = 313;
+
+    var vida_top_minion = 413;
     var vida_left_minion = 0;
+
+    var global_top_minion2 = 213;
+    var global_left_minion2 = 0;
+
+    var vida_top_minion2 = 213;
+    var vida_left_minion2 = 0;
+
     var unidade_medida = "px";
 
     var pontos = 0;
+    var velocidade = 100;
+    var quinze_abates = pontos % 5
+
+    div_campeao.style.top = `${global_top_campeao}${unidade_medida}`; // campeão
+    div_campeao.style.left = `${global_left_campeao}${unidade_medida}`;
 
 
     function mover_nuvem(event) { // "event" é o parâmetro/valor que será recebido pela função "mover_nuvem()" quando ela for invocada ao pressionar a tecla
@@ -79,6 +102,17 @@
             encerrar.style.display = 'block'
         }
 
+        if (event.key == "q") {
+            div_verPontos.innerHTML = `Você já abateu ${pontos} minions`
+            div_verPontos.style.display = 'block';
+        }
+
+        if (event.key == "e") {
+            div_verPontos.style.display = 'none';
+        }
+
+
+
         //for(var cont = 0; eventeevent.key == "Control";)
 
         if (global_left_campeao < 0) {
@@ -101,39 +135,52 @@
         div_campeao.style.top = `${global_top_campeao}${unidade_medida}`; // campeão
         div_campeao.style.left = `${global_left_campeao}${unidade_medida}`;
 
+        vida_torre.style.top = `${vida_top_minion}${unidade_medida}`; //torre
+        vida_torre.style.left = `${vida_left_minion}${unidade_medida}`;
+
+        var info_div_campeao = div_campeao.getBoundingClientRect();
+        var info_div_minion = div_minion.getBoundingClientRect();
+        var info_div_minion2 = div_minion2.getBoundingClientRect();
+
+        //minion 1
+        var bateuDireita1 = info_div_minion.right > info_div_campeao.left;
+        var bateuEsquerda1 = info_div_minion.left < info_div_campeao.right;
+        var bateuTopo1 = info_div_minion.top < info_div_campeao.bottom;
+        var bateuAbaixo1 = info_div_minion.bottom > info_div_campeao.top;
+
+        //minion 2
+        var bateuDireita2 = info_div_minion2.right > info_div_campeao.left;
+        var bateuEsquerda2 = info_div_minion2.left < info_div_campeao.right;
+        var bateuTopo2 = info_div_minion2.top < info_div_campeao.bottom;
+        var bateuAbaixo2 = info_div_minion2.bottom > info_div_campeao.top;
+
+        if (bateuDireita1 && bateuEsquerda1 && bateuTopo1 && bateuAbaixo1) {
+            var largura_atual = parseFloat(vida_minion.style.width);
+            var valorDiminuindo = 10
+            vida_minion.style.width = `${largura_atual - valorDiminuindo}px`
+        }
+
+        if (bateuDireita2 && bateuEsquerda2 && bateuTopo2 && bateuAbaixo2) {
+            var largura_atual = parseFloat(vida_minion2.style.width);
+            var valorDiminuindo = 10
+            vida_minion2.style.width = `${largura_atual - valorDiminuindo}px`
+
+        }
+    }
+
+
+
+    function mover_sozinho() {
+        global_left_minion += 10; // incrementa a distância do lado esquerdo em 1 
+        vida_left_minion += 10;
+
         div_minion.style.top = `${global_top_minion}${unidade_medida}`; // minion
         div_minion.style.left = `${global_left_minion}${unidade_medida}`;
 
         vida_minion.style.top = `${vida_top_minion}${unidade_medida}`; // vida minion
         vida_minion.style.left = `${vida_left_minion}${unidade_medida}`;
 
-        vida_torre.style.top = `${vida_top_minion}${unidade_medida}`; //torre
-        vida_torre.style.left = `${vida_left_minion}${unidade_medida}`;
-
-        var info_div_campeao = div_campeao.getBoundingClientRect();
-        var info_div_minion = div_minion.getBoundingClientRect();
-
-        var bateuDireita = info_div_minion.right > info_div_campeao.left;
-        var bateuEsquerda = info_div_minion.left < info_div_campeao.right;
-        var bateuTopo = info_div_minion.top < info_div_campeao.bottom;
-        var bateuAbaixo = info_div_minion.bottom > info_div_campeao.top;
-
-        if (bateuDireita && bateuEsquerda && bateuTopo && bateuAbaixo) {
-            var largura_atual = parseFloat(vida_minion.style.width);
-            var valorDiminuindo = 10
-            vida_minion.style.width = `${largura_atual - valorDiminuindo}px`
-
-        }
-    }
-
-
-    function mover_sozinho() {
-        global_left_minion += 10; // incrementa a distância do lado esquerdo em 1 
-        vida_left_minion += 10;
-        div_minion.style.left = `${global_left_minion}${unidade_medida}`;
-        vida_minion.style.left = `${vida_left_minion}${unidade_medida}`
-
-        console.log(div_minion);
+        //aumentar velocidade/dificuldade        
 
         var posicao_aleatoria = Math.random() * 600
         var aleatorio_inteiro = posicao_aleatoria.toFixed(0);
@@ -145,6 +192,11 @@
             div_minion.style.display = 'none';
             vida_minion.style.display = 'none';
             div_campeao.style.display = 'none';
+            div_minion2.style.display = 'none';
+            vida_minion2.style.display = 'none';
+            abatidos.style.display = 'none';
+            encerrar.style.display = 'none';
+            torre_imagem_jogo.style.display = 'none';
         }
         if (global_left_minion >= 1273) {
             var dano = 75
@@ -162,7 +214,7 @@
 
 
         if (vida_minion.style.width == '0px') {
-            clearInterval(intervalo);
+
 
             global_left_minion = 0;
             vida_left_minion = 0;
@@ -173,14 +225,78 @@
             pontos++
 
             vida_minion.style.width = '100px';
-            setTimeout(function () {
-                intervalo = setInterval(mover_sozinho, 100);
-            }, 100)
-        }
 
+            var cinco_abates = pontos % 2;
+
+            if(velocidade == 50) {
+                velocidade = 50
+            } else if (cinco_abates == 0 && pontos != 0) {
+                velocidade -= 2;      
+            }
+        }
+        
+        clearInterval(intervalo);
+        intervalo = setInterval(mover_sozinho, velocidade)
     }
 
-    var intervalo = setInterval(mover_sozinho, 100);
+    var intervalo = setInterval(mover_sozinho, velocidade);
+
+    function mover_sozinho2() {
+        global_left_minion2 += 10; // incrementa a distância do lado esquerdo em 1 
+        vida_left_minion2 += 10;
+
+        div_minion2.style.top = `${global_top_minion2}${unidade_medida}`; // minion 2
+        div_minion2.style.left = `${global_left_minion2}${unidade_medida}`;
+
+        vida_minion2.style.top = `${vida_top_minion2}${unidade_medida}`; // vida minion 2
+        vida_minion2.style.left = `${vida_left_minion2}${unidade_medida}`;
+
+        var posicao_aleatoria = Math.random() * 600
+        var aleatorio_inteiro = posicao_aleatoria.toFixed(0);
+
+        var largura_atual = parseFloat(vida_torre.style.width);
+
+        if (global_left_minion2 >= 1273) {
+            var dano = 75
+
+            vida_torre.style.width = `${largura_atual - dano}px`
+
+            global_left_minion2 = 0;
+            vida_left_minion2 = 0;
+
+            vida_top_minion2 = aleatorio_inteiro;
+            global_top_minion2 = aleatorio_inteiro;
+
+            vida_minion.style.width = '100px';
+        }
+
+
+        if (vida_minion2.style.width == '0px') {
+
+
+            global_left_minion2 = 0;
+            vida_left_minion2 = 0;
+
+            vida_top_minion2 = aleatorio_inteiro;
+            global_top_minion2 = aleatorio_inteiro;
+
+            pontos++
+
+            vida_minion2.style.width = '100px';
+
+            var cinco_abates = pontos % 2;
+
+            if(velocidade == 50) {
+                velocidade = 50
+            } else if (cinco_abates == 0 && pontos != 0) {
+                velocidade -= 2;      
+            }
+        }
+        clearInterval(intervalo2);
+        intervalo2 = setInterval(mover_sozinho2, velocidade)
+    }
+
+    var intervalo2 = setInterval(mover_sozinho2, velocidade);
 
     function voltar() {
 
@@ -227,7 +343,12 @@
                     pontuacaoServer: pontuacaoVar,
                     fkUsuarioServer: fkUsuarioVar
                 }),
-            });
+            }).then(function(resposta){
+                resposta.json()
+                .then(function(resposta){
+                    sessionStorage.idMinijogo=resposta.insertId
+                })
+            })
         }
 
         window.location.href = './pos-cadastro.html'

@@ -256,15 +256,6 @@ body {
   display: inline-block;
 }
 
-.btns-dash {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  flex-wrap: wrap;
-  padding: 0 30% 0 30%;
-}
-
 .graph {
   width: 70%;
   margin: auto;
@@ -327,12 +318,14 @@ canvas {
 .janela {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .header {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-top: 25px;
 }
 
 .header-left a {
@@ -347,6 +340,7 @@ canvas {
   align-items: center;
   box-shadow: 0px 0px 5px rgb(226, 178, 73);
   background-color: #212124;
+  padding: 0px 3%;
 }
 
 .dash-right {
@@ -366,7 +360,7 @@ canvas {
 }
 
 .usuario {
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 .hello {
@@ -374,6 +368,8 @@ canvas {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
 .hello img {
@@ -388,6 +384,7 @@ canvas {
   color: #e3b062;
   font-weight: 300;
   font-size: 1.2rem;
+  margin-bottom: 0;
 }
 
 .hello h3 span {
@@ -401,6 +398,7 @@ canvas {
   border: 3px solid rgb(121,93,32);
   text-align: center;
   padding: 10px;
+  margin-right: 20px;
 }
 
 .btn-nav h3,
@@ -411,13 +409,44 @@ canvas {
 
 .btn-logout {
   margin: 0;
-  padding: 0;
-  width: 20px;
-  background-color: #32b9cd;
-  color: white;
-  border-radius: 10px;
+  background-color: #010A13;
+  color: #C8AA6E;
+  border: 3px solid #C8AA6E;
   text-align: center;
   padding: 10px 15px;
-  margin-bottom: 100px;
   cursor: pointer;
+  width: fit-content;
+  margin-left: 10px;
+}
+
+.conteudo_pos-cadastro {
+  margin-top: 4%;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.conteudo_pos-cadastro .linha {
+  border: 1px solid #e2b249;
+  box-shadow: 0px 0px 5px #e2b249;
+}
+
+.index-cadastro {
+  width: 50%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* GRÁFICO DOS RANKINGS */
+
+.ranking {
+  padding: 30px;
+  height: 200px;
+  width: fit-content;
+}
+
+.ranking-display {
+  display: flex;
+  justify-content: center;
 }

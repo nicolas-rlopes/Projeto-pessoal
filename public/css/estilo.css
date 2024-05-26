@@ -489,7 +489,7 @@ body {
   border: 2px solid #795d20;
 }
 
-.nexus h2{
+.imagemEstrutura h2{
   font-size: 40px;
   letter-spacing: 2px;
   text-shadow: 0px 0px 5px #11BCF2;
@@ -887,7 +887,7 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 900px;
+  width: 950px;
   background-color: #010A13;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.588);
 }
@@ -971,6 +971,22 @@ input {
   margin-bottom: 50px;
 }
 
+.aviso_quiz {
+  position: fixed;
+  left: 83%;
+  top: 40%;
+  width: 200px;
+  margin-right: 2%;
+  padding: 1%;
+  text-align: center;
+  font-size: 25px;
+  text-shadow: 0px 0px 10px #11BCF2;
+}
+
+.aviso_quiz #mensagem_erro {
+  
+}
+
 /* MINIGAME */
 
 #fundo {
@@ -997,7 +1013,7 @@ input {
   height: 100%;
 }
 
-#div_minion {
+#div_minion, #div_minion2 {
   width: 100px;
   height: 100px;
   position: absolute;
@@ -1006,7 +1022,7 @@ input {
   transition: 0.1s linear;
 }
 
-#vida_minion {
+#vida_minion, #vida_minion2 {
   position: absolute;
   border: 3px solid #010A13;
   background-color: red;
@@ -1021,10 +1037,10 @@ input {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
-.torre {
+.minigame .torre {
   display: flex;
   flex-direction: column-reverse;
   background-image: url(imagens/torre);
@@ -1043,12 +1059,12 @@ input {
 }
 
 #div_derrota{
-  width: 70%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 20%;
+
 }
 
 #div_derrota img {
@@ -1075,4 +1091,28 @@ input {
   top: 0px; 
   left: 0px;
   margin-left: 50px;
+}
+
+#encerrar:hover {
+  background-color: #010A13;
+  box-shadow: 0px 0px 10px #010A13;
+  transition: 1s ease-out;
+}
+
+.abatidos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15%;
+}
+
+#div_verPontos {
+  height: 200px;
+  width: 400px;
+  background-color: #010a138c;
+  border: 4px solid #795d20;
+  box-shadow: 0px 0px 5px black;
+  text-align: center;
+  font-size: 30px;
 }

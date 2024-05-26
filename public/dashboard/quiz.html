@@ -6,37 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link rel="stylesheet" href="./../css/estilo.css">
+    <link rel="stylesheet" href="./../css/dashboards.css">
 </head>
 
 <body>
     <!--Header-->
-    <div class="navbar">
-        <div class="container">
-            <div class="logo">
-                <img src="./../css/imagens/LOGO-FINAL.png" alt="Logo da Riot com o meu nome">
-            </div>
-            <div class="nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="agora"><a href="quiz.html">Quiz</a></li>
-                    <li><a href="cadastro.html">Cadastro</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+
     <!--Header-->
     <div class="fundo_quiz">
+        <div class="aviso_quiz" id="aviso_quiz" style="display: none;">
+            <span id="mensagem_erro">Preencha todos os campos antes de finalizar o Quiz!</span>
+            <div id="erro_imagem"><img
+                    src="https://i.pinimg.com/originals/d8/14/82/d81482fe0d37418598fd571cf3653b1e.png" alt=""></div>
+        </div>
         <div class="conteudo_quiz">
+            <div class="janela">
+                <div class="header">
+                    <div class="usuario">
+                        <div class="hello">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUf6Ts0Tw2N_J5xiqjICUCz_z0qSTzAJpoFbdkF6xXEQ&s"
+                                alt="">
+                            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                        </div>
+                    </div>
+
+                    <div class="header-left">
+
+                        <div class="btn-nav">
+                            <a href="./pos-cadastro.html">
+                                <h3>Inicial</h3>
+                            </a>
+                        </div>
+
+                        <div class="btn-nav">
+                            <a href="./cards.html">
+                                <h3>Perfil</h3>
+                            </a>
+                        </div>
+
+                        <div class="btn-nav">
+                            <a href="./minigame.html">
+                                <h3>Minigame</h3>
+                            </a>
+                        </div>
+
+                        <div class="btn-nav">
+                            <a href="./quiz.html">
+                                <h3>Quiz</h3>
+                            </a>
+                        </div>
+
+                        <div class="btn-logout" onclick="limparSessao()">
+                            <h3>Sair</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <h1 class="titulo_quiz">Quiz de conhecimento de League of Legends</h1>
             <div class="caixa">
                 <div class="quiz" id="questao1">
                     <h2>Questão 1</h2>
                     <h3>Qual a data de lançamento do jogo?</h3>
-                    <span><input type="radio" id="input_A1" name="questao1">A) 27 de outubro de 2009 </span>
-                    <span><input type="radio" id="input_B1" name="questao1">B) 20 de novembro de 2010 </span>
-                    <span><input type="radio" id="input_C1" name="questao1">C) 27 de outubro de 2013 </span>
-                    <span><input type="radio" id="input_D1" name="questao1">D) 19 de maio de 2010 </span>
+                    <span><b>A)</b> <input type="radio" id="input_Q1_A" name="questao1" value="27 de outubro de 2009">
+                        27 de outubro de 2009 </span>
+                    <span><b>B)</b> <input type="radio" id="input_Q1_B" name="questao1" value="20 de novembro de 2010">
+                        20 de novembro de 2010 </span>
+                    <span><b>C)</b> <input type="radio" id="input_Q1_C" name="questao1" value="27 de outubro de 2013">
+                        27 de outubro de 2013 </span>
+                    <span><b>D)</b> <input type="radio" id="input_Q1_D" name="questao1" value="19 de maio de 2010"> 19
+                        de maio de 2010 </span>
                 </div>
             </div>
             <div class="caixa">
@@ -46,90 +84,121 @@
                     <div class="mapa">
                         <img src="./../css/imagens/summoners-rift-map.webp" alt="">
                     </div>
-                    <span><input type="radio" id="input_A2" name="questao2">A) 4 </span>
-                    <span><input type="radio" id="input_B2" name="questao2">B) 5 </span>
-                    <span><input type="radio" id="input_C2" name="questao2">C) 3 </span>
-                    <span><input type="radio" id="input_D2" name="questao2">D) 1 </span>
+                    <span><b>A)</b> <input type="radio" id="input_Q2_A" name="questao2" value="4"> 4 </span>
+                    <span><b>B)</b> <input type="radio" id="input_Q2_B" name="questao2" value="5"> 5 </span>
+                    <span><b>C)</b> <input type="radio" id="input_Q2_C" name="questao2" value="3"> 3 </span>
+                    <span><b>D)</b> <input type="radio" id="input_Q2_D" name="questao2" value="1"> 1 </span>
                 </div>
             </div>
             <div class="caixa">
                 <div class="quiz" id="questao3">
                     <h2>Questão 3</h2>
                     <h3>Quantos campeões existem atualmente dentro do jogo?</h3>
-                    <span><input type="radio" id="input_A3" name="questao3">A) 130 </span>
-                    <span><input type="radio" id="input_B3" name="questao3">B) 135 </span>
-                    <span><input type="radio" id="input_C3" name="questao3">C) 140 </span>
-                    <span><input type="radio" id="input_D3" name="questao3">D) 145 </span>
+                    <span><b>A)</b> <input type="radio" id="input_Q3_A" name="questao3" value="130"> 130 </span>
+                    <span><b>B)</b> <input type="radio" id="input_Q3_B" name="questao3" value="135"> 135 </span>
+                    <span><b>C)</b> <input type="radio" id="input_Q3_C" name="questao3" value="140"> 140 </span>
+                    <span><b>D)</b> <input type="radio" id="input_Q3_D" name="questao3" value="145"> 145 </span>
                 </div>
             </div>
             <div class="caixa">
                 <div class="quiz" id="questao4">
                     <h2>Questão 4</h2>
                     <h3>Como faz para ganhar uma partida de League of Legends?</h3>
-                    <span><input type="radio" id="input_A4" name="questao4">A) Abatendo a maior quantidade de inimigos </span>
-                    <span><input type="radio" id="input_B4" name="questao4">B) Protegendo as suas torres </span>
-                    <span><input type="radio" id="input_C4" name="questao4">C) Destruindo o Nexus do inimigo </span>
-                    <span><input type="radio" id="input_D4" name="questao4">D) Destruindo as torres do adversário </span>
+                    <span><b>A)</b> <input type="radio" id="input_Q4_A" name="questao4"
+                            value="Abatendo a maior quantidade de inimigos"> Abatendo a maior quantidade de inimigos
+                    </span>
+                    <span><b>B)</b> <input type="radio" id="input_Q4_B" name="questao4"
+                            value="Protegendo as suas torres"> Protegendo as suas torres </span>
+                    <span><b>C)</b> <input type="radio" id="input_Q4_C" name="questao4"
+                            value="Destruindo o Nexus do inimigo"> Destruindo o Nexus do inimigo </span>
+                    <span><b>D)</b> <input type="radio" id="input_Q4_D" name="questao4"
+                            value="Destruindo as torres do adversário"> Destruindo as torres do adversário </span>
                 </div>
             </div>
             <div class="caixa">
                 <div class="quiz" id="questao5">
                     <h2>Questão 5</h2>
                     <h3>Qual o nome do monstro que nasce aos 20:00 minutos de jogo?</h3>
-                    <span><input type="radio" id="input_A5" name="questao5">A) Barão Na'Shor </span>
-                    <span><input type="radio" id="input_B5" name="questao5">B) Golens </span>
-                    <span><input type="radio" id="input_C5" name="questao5">C) Dragão </span>
-                    <span><input type="radio" id="input_D5" name="questao5">D) Dragão Ancião </span>
+                    <span><b>A)</b> <input type="radio" id="input_Q5_A" name="questao5" value="Barão NaShor"> Barão
+                        NaShor </span>
+                    <span><b>B)</b> <input type="radio" id="input_Q5_B" name="questao5" value="Golens"> Golens </span>
+                    <span><b>C)</b> <input type="radio" id="input_Q5_C" name="questao5" value="Dragão"> Dragão </span>
+                    <span><b>D)</b> <input type="radio" id="input_Q5_D" name="questao5" value="Dragão Ancião"> Dragão
+                        Ancião </span>
                 </div>
             </div>
             <div class="caixa">
                 <div class="quiz" id="questao6">
                     <h2>Questão 6</h2>
                     <h3>Dois campos específicos da Selva são conhecidos pela sua cor, sendo elas:</h3>
-                    <span><input type="radio" id="input_A6" name="questao6">A) Green e Red | Verde e Vermelho </span>
-                    <span><input type="radio" id="input_B6" name="questao6">B) Golden e Yellow | Dourado e Amarelo </span>
-                    <span><input type="radio" id="input_C6" name="questao6">C) Blue e Purple | Azul e Roxo </span>
-                    <span><input type="radio" id="input_D6" name="questao6">D) Blue e Red | Azul e Vermelho </span>
+                    <span><b>A)</b> <input type="radio" id="input_Q6_A" name="questao6"
+                            value="Green e Red | Verde e Vermelho "> Green e Red | Verde e Vermelho </span>
+                    <span><b>B)</b> <input type="radio" id="input_Q6_B" name="questao6"
+                            value="Golden e Yellow | Dourado e Amarelo "> Golden e Yellow | Dourado e Amarelo </span>
+                    <span><b>C)</b> <input type="radio" id="input_Q6_C" name="questao6"
+                            value="Blue e Purple | Azul e Roxo "> Blue e Purple | Azul e Roxo </span>
+                    <span><b>D)</b> <input type="radio" id="input_Q6_D" name="questao6"
+                            value="Blue e Red | Azul e Vermelho"> Blue e Red | Azul e Vermelho </span>
                 </div>
             </div>
             <div class="caixa">
                 <div class="quiz" id="questao7">
                     <h2>Questão 7</h2>
                     <h3>A partir de que nível um jogador pode jogar Filas Ranqueadas/Competitivas?</h3>
-                    <span><input type="radio" id="input_A7" name="questao7">A) Nível 50 </span>
-                    <span><input type="radio" id="input_B7" name="questao7">B) Nível 40 </span>
-                    <span><input type="radio" id="input_C7" name="questao7">C) Nível 30 </span>
-                    <span><input type="radio" id="input_D7" name="questao7">D) Nível 20 </span>
+                    <span><b>A)</b> <input type="radio" id="input_Q7_A" name="questao7" value="Nível 50"> Nível 50
+                    </span>
+                    <span><b>B)</b> <input type="radio" id="input_Q7_B" name="questao7" value="Nível 40"> Nível 40
+                    </span>
+                    <span><b>C)</b> <input type="radio" id="input_Q7_C" name="questao7" value="Nível 30"> Nível 30
+                    </span>
+                    <span><b>D)</b> <input type="radio" id="input_Q7_D" name="questao7" value="Nível 20"> Nível 20
+                    </span>
                 </div>
             </div>
             <div class="caixa">
                 <div class="quiz" id="questao8">
                     <h2>Questão 8</h2>
-                    <h3>Caso algum jogador tenha um mal comportamneto durante a partida, qual seria a melhor situação a se seguir:</h3>
-                    <span><input type="radio" id="input_A8" name="questao8">A) Reporta-lo ao final da partida e esperar que ele seja punido </span>
-                    <span><input type="radio" id="input_B8" name="questao8">B) Discutir com o mesmo fazendo ameaças e xingando de volta </span>
-                    <span><input type="radio" id="input_C8" name="questao8">C) Não fazer nada e apenas observar </span>
-                    <span><input type="radio" id="input_D8" name="questao8">D) Discutir com o mesmo fazendo ameaças e xingando de volta e ao final da partida reporta-lo</span>
+                    <h3>Caso algum jogador tenha um mal comportamneto durante a partida, qual seria a melhor situação a
+                        se seguir:</h3>
+                    <span><b>A)</b> <input type="radio" id="input_Q8_A" name="questao8"
+                            value="Reporta-lo ao final da partida e esperar que ele seja punido"> Reporta-lo ao final da
+                        partida e esperar que ele seja punido </span>
+                    <span><b>B)</b> <input type="radio" id="input_Q8_B" name="questao8"
+                            value="Discutir com o mesmo fazendo ameaças e xingando de volta"> Discutir com o mesmo
+                        fazendo ameaças e xingando de volta </span>
+                    <span><b>C)</b> <input type="radio" id="input_Q8_C" name="questao8"
+                            value="Não fazer nada e apenas observar"> Não fazer nada e apenas observar </span>
+                    <span><b>D)</b> <input type="radio" id="input_Q8_D" name="questao8"
+                            value="Discutir com o mesmo fazendo ameaças e xingando de volta e ao final da partida reporta-lo">
+                        Discutir com o mesmo fazendo ameaças e xingando de volta e ao final da partida reporta-lo</span>
                 </div>
             </div>
             <div class="caixa">
                 <div class="quiz" id="questao9">
                     <h2>Questão 9</h2>
                     <h3>Quantos Elos/Ranques existem ao total?</h3>
-                    <span><input type="radio" id="input_A9" name="questao9">A) 5 Ranques </span>
-                    <span><input type="radio" id="input_B9" name="questao9">B) 10 Ranques </span>
-                    <span><input type="radio" id="input_C9" name="questao9">C) 12 Ranques </span>
-                    <span><input type="radio" id="input_D9" name="questao9">D) 8 Ranques </span>
+                    <span><b>A)</b> <input type="radio" id="input_Q9_A" name="questao9" value="5 Ranques"> 5 Ranques
+                    </span>
+                    <span><b>B)</b> <input type="radio" id="input_Q9_B" name="questao9" value="10 Ranques"> 10 Ranques
+                    </span>
+                    <span><b>C)</b> <input type="radio" id="input_Q9_C" name="questao9" value="12 Ranques"> 12 Ranques
+                    </span>
+                    <span><b>D)</b> <input type="radio" id="input_Q9_D" name="questao9" value="8 Ranques"> 8 Ranques
+                    </span>
                 </div>
             </div>
             <div class="caixa">
                 <div class="quiz" id="questao10">
                     <h2>Questão 10</h2>
                     <h3>Quantas torres existem no mapa de Summoner's Rif</h3>
-                    <span><input type="radio" id="input_A10" name="questao10">A) 11 Torres </span>
-                    <span><input type="radio" id="input_B10" name="questao10">B) 9 Torres </span>
-                    <span><input type="radio" id="input_C10" name="questao10">C) 22 Torres </span>
-                    <span><input type="radio" id="input_D10" name="questao10">D) 18 Torres </span>
+                    <span><b>A)</b> <input type="radio" id="input_Q10_A" name="questao10" value="11 Torres"> 11 Torres
+                    </span>
+                    <span><b>B)</b> <input type="radio" id="input_Q10_B" name="questao10" value="9 Torres"> 9 Torres
+                    </span>
+                    <span><b>C)</b> <input type="radio" id="input_Q10_C" name="questao10" value="22 Torres"> 22 Torres
+                    </span>
+                    <span><b>D)</b> <input type="radio" id="input_Q10_D" name="questao10" value="18 Torres"> 18 Torres
+                    </span>
                 </div>
             </div>
             <div class="resposta_quiz">
@@ -145,132 +214,77 @@
 </html>
 
 <script>
-    
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    var respostas_certas = ['27 de outubro de 2009', '5', '140', 'Destruindo o Nexus do inimigo', 'Barão NaShor', 'Blue e Red | Azul e Vermelho', 'Nível 30', 'Reporta-lo ao final da partida e esperar que ele seja punido', '10 Ranques', '22 Torres'];
+    var respostas_inseridas = [];
 
     function finalizar() {
         var acertosVar = 0
-       
 
-        var respostaA1 = input_A1.checked;
-        var respostaB1 = input_B1.checked;
-        var respostaC1 = input_C1.checked;
-        var respostaD1 = input_D1.checked;
+        respostas_inseridas = [];
 
-        var respostaA2 = input_A2.checked;
-        var respostaB2 = input_B2.checked;
-        var respostaC2 = input_C2.checked;
-        var respostaD2 = input_D2.checked;
+        for (var index = 1; index <= 10; index++) {
 
-        
-        var respostaA3 = input_A3.checked;
-        var respostaB3 = input_B3.checked;
-        var respostaC3 = input_C3.checked;
-        var respostaD3 = input_D3.checked;
+            var questao = document.getElementsByName("questao" + index); // mudando a questão com concatenação  
 
-        var respostaA4 = input_A4.checked;
-        var respostaB4 = input_B4.checked;
-        var respostaC4 = input_C4.checked;
-        var respostaD4 = input_D4.checked;
+            for (var indexQuestao = 0; indexQuestao < questao.length; indexQuestao++) {
 
-        var respostaA5 = input_A5.checked;
-        var respostaB5 = input_B5.checked;
-        var respostaC5 = input_C5.checked;
-        var respostaD5 = input_D5.checked;
+                if (questao[indexQuestao].checked) { // ver qual das posições está checada 0, 1, 2 ou 3
+                    respostas_inseridas.push(questao[indexQuestao].value) // inserir o TEXTO
+                } else {
 
-        var respostaA6 = input_A6.checked;
-        var respostaB6 = input_B6.checked;
-        var respostaC6 = input_C6.checked;
-        var respostaD6 = input_D6.checked;
-
-        var respostaA7 = input_A7.checked;
-        var respostaB7 = input_B7.checked;
-        var respostaC7 = input_C7.checked;
-        var respostaD7 = input_D7.checked;
-        
-        var respostaA8 = input_A8.checked;
-        var respostaB8 = input_B8.checked;
-        var respostaC8 = input_C8.checked;
-        var respostaD8 = input_D8.checked;
-        
-        var respostaA9 = input_A9.checked;
-        var respostaB9 = input_B9.checked;
-        var respostaC9 = input_C9.checked;
-        var respostaD9 = input_D9.checked;
-
-        var respostaA10 = input_A10.checked;
-        var respostaB10 = input_B10.checked;
-        var respostaC10 = input_C10.checked;
-        var respostaD10 = input_D10.checked;
-
-        if (respostaA1) {
-            acertosVar++
-        } 
-
-        if (respostaB2) {
-            acertosVar++
-        } 
-
-        if (respostaC3) {
-            acertosVar++
-        } 
-
-        if (respostaC4) {
-            acertosVar++
-        } 
-
-        if (respostaA5) {
-            acertosVar++
-        } 
-
-        if (respostaD6) {
-            acertosVar++
-        } 
-
-        if (respostaC7) {
-            acertosVar++
-        } 
-
-        if (respostaA8) {
-            acertosVar++
-        } 
-
-        if (respostaB9) {
-            acertosVar++
-        } 
-
-        if (respostaC10) {
-            acertosVar++
-        } 
-
-        if (acertosVar == 10) {
-            div_mensagem.innerHTML = `Você acertou todas as questões <b style="color: goldenrod;">CAMPEÃO</b>`
-        } else if (acertosVar >= 6){
-            div_mensagem.innerHTML = `Estamos quase lá Invocador!`
-        } else {
-            div_mensagem.innerHTML = `Vamos melhorar nesse conhecimento Invocador!`
+                }
+            }
         }
 
-        var errosVar = 10 - acertosVar;
-        var fkUsuarioVar = sessionStorage.ID_USUARIO;
-        
-        if(acertosVar < 0 || acertosVar > 10){
-            alert('O quiz esta com menos de 0 ou mais de 10 acertos')
+        if (respostas_inseridas.length < 10) {
+            aviso_quiz.style.display = 'block';
+
         } else {
-            fetch("/usuarios/acrescentar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                acertosServer: acertosVar,
-                errosServer: errosVar,
-                fkUsuarioServer: fkUsuarioVar
-            }),
-        });
+            aviso_quiz.style.display = 'none';
+
+            for (var index = 0; index < respostas_certas.length; index++) {
+                var resposta_certa_atual = respostas_certas[index];
+                var resposta_inserida_atual = respostas_inseridas[index];
+
+                if (resposta_certa_atual == resposta_inserida_atual) {
+                    acertosVar++
+                }
+            }
+
+            if (acertosVar == 10) {
+                div_mensagem.innerHTML = `Você acertou ${acertosVar} - Você acertou todas as questões <b style="color: goldenrod;">CAMPEÃO</b>`
+            } else if (acertosVar >= 6) {
+                div_mensagem.innerHTML = `Você acertou ${acertosVar} - Estamos quase lá Invocador!`
+            } else {
+                div_mensagem.innerHTML = `Você acertou ${acertosVar} - Vamos melhorar nesse conhecimento Invocador!`
+            }
+
+            var errosVar = 10 - acertosVar;
+            var fkUsuarioVar = sessionStorage.ID_USUARIO;
+
+            if (acertosVar < 0 || acertosVar > 10) {
+                alert('O quiz esta com menos de 0 ou mais de 10 acertos')
+            } else {
+                fetch("/usuarios/acrescentar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        // crie um atributo que recebe o valor recuperado aqui
+                        // Agora vá para o arquivo routes/usuario.js
+                        acertosServer: acertosVar,
+                        errosServer: errosVar,
+                        fkUsuarioServer: fkUsuarioVar
+                    }),
+                });
+            }
+        }
+
+
+
     }
 
-}
-        
 </script>
