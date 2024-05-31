@@ -9,15 +9,16 @@ function buscarUltimosRankings(idMinijogo, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarRankingsEmTempoReal(fkUsuario) {
+// function buscarRankingsEmTempoReal(fkUsuario) {
 
-    var instrucaoSql = `SELECT pontuacao, fkUsuario FROM minijogo WHERE id = ${fkUsuario} ORDER BY id DESC LIMIT 1`;
+//     var instrucaoSql = `SELECT pontuacao, fkUsuario FROM minijogo WHERE id = ${fkUsuario} ORDER BY id DESC LIMIT 1`;
 
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
+//     console.log("Executando a instrução SQL: \n" + instrucaoSql);
+//     return database.executar(instrucaoSql);
+// }
 
 module.exports = {
     buscarUltimosRankings,
-    buscarRankingsEmTempoReal
+    // buscarRankingsEmTempoReal,
+    
 }

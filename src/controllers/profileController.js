@@ -1,14 +1,15 @@
-var medidaModel = require("../models/medidaModel");
+var profileModel = require("../models/profileModel");
 
-function buscarUltimosRankings(req, res) {
+function buscarRankingPessoal(req, res) {
 
     const limite_linhas = 5;
 
     const idMinijogo = req.params.idMinijogo;
+    var nomeUsuario = req.params.nomeUsuario;
 
-    console.log(`Recuperando os ultimos ${limite_linhas} rankings`);
+    console.log(`Recuperando os ultimos ${limite_linhas} rankings do usuario ${nomeUsuario}`);
 
-    medidaModel.buscarUltimosRankings(idMinijogo, limite_linhas).then(function (resultado) {
+    profileModel.buscarRankingPessoal(idMinijogo, limite_linhas, nomeUsuario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -22,6 +23,5 @@ function buscarUltimosRankings(req, res) {
 }
 
 module.exports = {
-    buscarUltimosRankings,
-    // buscarRankingsEmTempoReal,
+    buscarRankingPessoal
 }

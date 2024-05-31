@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-Vindo</title>
+    <title>AquaTech | Tempo Real</title>
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
@@ -18,93 +18,81 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
     <div class="janela">
-        <div class="header">
-            <div class="usuario">
-                <div class="hello">
-                    <img src="./../css/imagens/yasuo.jpeg" alt="">
-                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-                </div>
-            </div>
 
-            <div class="header-left">
-
-                <div class="btn-nav">
-                    <a href="./pos-cadastro.html">
-                        <h3>Inicial</h3>
-                    </a>
+        <div class="janela">
+            <div class="header">
+                <div class="usuario">
+                    <div class="hello">
+                        <img src="./../css/imagens/yasuo.jpeg" alt="">
+                        <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                    </div>
                 </div>
 
-                <div class="btn-nav">
-                    <a href="./perfil.html">
-                        <h3>Perfil</h3>
-                    </a>
-                </div>
+                <div class="header-left">
 
-                <div class="btn-nav">
-                    <a href="./minigame.html">
-                        <h3>Minigame</h3>
-                    </a>
-                </div>
+                    <div class="btn-nav">
+                        <a href="./pos-cadastro.html">
+                            <h3>Inicial</h3>
+                        </a>
+                    </div>
 
-                <div class="btn-nav">
-                    <a href="./quiz.html">
-                        <h3>Quiz</h3>
-                    </a>
-                </div>
+                    <div class="btn-nav">
+                        <a href="./perfil.html">
+                            <h3>Perfil</h3>
+                        </a>
+                    </div>
 
-                <div class="btn-logout" onclick="limparSessao()">
-                    <h3>Sair</h3>
+                    <div class="btn-nav">
+                        <a href="./minigame.html">
+                            <h3>Minigame</h3>
+                        </a>
+                    </div>
+
+                    <div class="btn-nav">
+                        <a href="./quiz.html">
+                            <h3>Quiz</h3>
+                        </a>
+                    </div>
+
+                    <div class="btn-logout" onclick="limparSessao()">
+                        <h3>Sair</h3>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-    <div class="conteudo_pos-cadastro">
-        <div class="index-cadastro">
-            No LeagueTech você aprenderá sobre o jogo jogando, com esses quizes,
-        </div>
-        <div class="linha"></div>
-        <div class="index-cadastro">
-            <h1>Melhores Jogadores do <b
-                    style=" color: rgb(2, 14, 23); text-shadow: 0px 0px 10px #020e17c7; background-color: rgb(240, 230, 210); padding: 5px; border-radius: 10px;">Minigame</b>
-            </h1>
-            <div class="ranking-display">
-                <div class="ranking" id="btnRank">
-                    <canvas id="myChartCanvas" style="position: relative;"></canvas>
-                </div>
+    <div>
+        <div class="ranking-display">
+            <div class="ranking">
+                <canvas id="myChartCanvas" style="position: relative;"></canvas>
             </div>
-            Aqui vai ficar os graficos mostrando o rankig de todos os usuarios
-        </div>
-    </div>
-
-    <div class="conteudo-atividade">
-        <div class="atividades">
-
+            <div class="ranking">
+                <canvas id="myChartCanvas2" style="position: relative;"></canvas>
+            </div>
         </div>
     </div>
 
 </body>
-
-</html>
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
 
-    window.onload = exibirRankingDosUsuarios();
+    window.onload = exibirRankingPessoal();
 
-    function exibirRankingDosUsuarios() {
-
-
-        // exibirMinijogo()
-        obterDadosGrafico(sessionStorage.idMinijogo)
+    function exibirRankingPessoal() {
+        let idMinijogo = sessionStorage.idMinijogo;
+        obterDadosGraficoPerfil()
+        obterTentativasGraficoPerfil()
     }
 
     function alterarTitulo(idMinijogo) {
@@ -115,31 +103,32 @@
 
 
     // O gráfico é construído com três funções:
-    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 1. obterDadosGraficoPerfil -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
     // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
     // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
 
-    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // Esta função *obterDadosGraficoPerfil* busca os últimos dados inseridos em tabela de medidas.
     // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+    // A função *obterDadosGraficoPerfil* também invoca a função *plotarGrafico*
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idMinijogo) {
-
+    
+    function obterDadosGraficoPerfil(idMinijogo) {
+        let nomeUsuario = sessionStorage.NOME_USUARIO;
         // alterarTitulo(idMinijogo)
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${idMinijogo}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/profiles/ultimas/${idMinijogo}/${nomeUsuario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                response.json().then(function (respostaPerfil) {
+                    console.log(`Dados recebidos: ${JSON.stringify(respostaPerfil)}`);
 
 
-                    plotarGrafico(resposta, idMinijogo);
+                    plotarGrafico(respostaPerfil, idMinijogo);
 
                 });
             } else {
@@ -154,11 +143,11 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idMinijogo) {
+    function plotarGrafico(respostaPerfil, idMinijogo) {
 
         console.log('iniciando plotagem do gráfico...');
 
-        var labels = resposta.map(el => el.nome);
+        var labels = respostaPerfil.map(el => el.nome);
         // Criando estrutura para plotar gráfico - labels
         // let labels = [
         // 'TOP 1',
@@ -173,7 +162,7 @@
             labels: labels,
             datasets: [{
                 label: 'Pontuação',
-                data: resposta.map(el => el.pontuacao),
+                data: respostaPerfil.map(el => el.pontuacao),
                 backgroundColor: '#CDFAFA',
                 borderColor: '#3C3C41',
                 borderWidth: 3,
@@ -211,12 +200,12 @@
         };
 
         console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGraficoPerfil" e passados para "plotarGrafico":')
+        console.log(respostaPerfil)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
+        for (i = 0; i < respostaPerfil.length; i++) {
+            var registro = respostaPerfil[i];
             //labels.push(registro.momento_grafico); (ESTAVA COLOCANDO MAIS LABELS NO RANKING)
             dados.datasets[0].data.push(registro.ranking);
         }
@@ -241,21 +230,143 @@
             document.getElementById(`myChartCanvas`),
             config
         );
+    }
 
-        // setTimeout(() => atualizarGrafico(idMinijogo, dados, myChart), 2000);
+    //GRAFICO DAS TENTATIVAS DO QUIZ
+    //----------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------
+    //GRAFICO DAS TENTATIVAS DO QUIZ
+
+    function obterTentativasGraficoPerfil() {
+        let nomeUsuario = sessionStorage.NOME_USUARIO;
+        
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/quizes/ultimas/tentativas/${nomeUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (respostaPerfil) {
+                    console.log(`Dados recebidos: ${JSON.stringify(respostaPerfil)}`);
+
+
+                    mostrarGrafico(respostaPerfil);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
     }
 
 
-    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-    // buscando a última medida inserida em tabela contendo as capturas, 
+    function mostrarGrafico(respostaPerfil) {
 
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
+        console.log('iniciando plotagem do gráfico...');
+
+        var labels2 = [
+            'Última',
+            'Penúltima',
+            'Antepenúltima'
+        ];
+
+        var labelsAcerto = [
+            'Acertos'
+        ]
+
+        let dados2 = {
+            labels: labels2,
+            datasets: [{
+                label: 'Acertos',
+                data: respostaPerfil.map(el => el.acertos),
+                backgroundColor: '#17EDF8',
+                borderColor: '#3C3C41',
+                borderWidth: 3,
+                borderSkipped: false,
+                tension: 0.1,
+                color: '#fff'
+            },
+            {
+                
+                label: 'Erros',
+                data: respostaPerfil.map(el => el.erros),
+                backgroundColor: '#E81E1E',
+                borderColor: '#3C3C41',
+                borderWidth: 3,
+                borderSkipped: false,
+                tension: 0.1,
+                color: '#fff'
+            }]
+        };
+
+        let options = {
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#C89B3C' // Cor das labels do eixo X
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: '#C89B3C' // Cor das labels do eixo Y
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#C89B3C' // Cor das labels da legenda
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Suas últimas tentativas',
+                    color: '#C89B3C' // Cor do título
+                }
+            }
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGraficoPerfil" e passados para "mostrarGrafico":')
+        console.log(respostaPerfil)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < respostaPerfil.length; i++) {
+            var registro = respostaPerfil[i];
+            //labels.push(registro.momento_grafico); (ESTAVA COLOCANDO MAIS LABELS NO RANKING)
+            dados2.datasets[0].data.push(registro.ranking);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels2)
+        console.log('Dados:')
+        console.log(dados2.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config2 = {
+            type: 'bar',
+            data: dados2,
+            options: options
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas2`),
+            config2
+        );
+    }
+
     function atualizarGrafico(idMinijogo, dados, myChart) {
 
-
-
-        fetch(`/medidas/tempo-real/${idMinijogo}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/profiles/tempo-real/${idMinijogo}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -303,6 +414,8 @@
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
-
     }
+
 </script>
+
+</html>

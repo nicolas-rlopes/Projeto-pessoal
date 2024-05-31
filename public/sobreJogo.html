@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeagueTech | Home</title>
+    <link rel="stylesheet" href="css/estilo.css">
+
+    <link rel="icon" href="./assets/icon/favicon2.ico" />
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="css/imagens/LOGO-FINAL.png" alt="Logo da Riot com o meu nome">
+            </div>
+            <div class="nav">
+                <ul>
+                    <div class="rotacao"><li><a href="index.html">Home</a></li></div>
+                    <div class="rotacao"><li class="agora"><a href="sobreJogo.html">Sobre o Jogo</a></li></div>
+                    <div><li><a href="">|</a></li></div>
+                    <div class="rotacao"><li><a href="cadastro.html">Cadastro</a></li></div>
+                    <div class="rotacao"><li><a href="login.html">Login</a></li></div>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="titulo">
+            <img src="css/imagens/campeoes.jpeg" alt="Imagem de campeões do LoL">
+        </div>
+        <div class="metade">
+            <h3>O que é o League of Legends</h3>
+            <p>É um jogo eletrônico do gênero multiplayer online battle arena, mais conhecido como <b>MOBA</b>,
+                desenvolvido e publicado pela Riot Games, lançado em 27 de outubro de 2009.</p>
+        </div>
+    </div>
+    
+    <div class="sobre">
+        <div class="conteudo">
+            <div class="metade">
+                <div class="titulos">
+                    <div class="t1">
+                        <h1>Como funciona a sua gameplay</h1>
+                    </div>
+                    <div class="t2">
+                        <h2>As 5 funções diferentes são conhecidas como:</h2>
+                    </div>
+                </div>
+                <div class="separado">
+                    <div class="lanes">
+                        <div id="mostrar">
+                            <div id="rotas">
+                                <ul>
+                                    <li><button onclick="topo()">Rota Superior/Top</button></li>
+                                    <li><button onclick="jungle()">Selva/Jungle</button></li>
+                                    <li><button onclick="mid()">Rota do Meio/Mid</button></li>
+                                    <li><button onclick="adc()">Rota Inferior/ADC</button></li>
+                                    <li><button onclick="sup()">Suporte/SUP</button></li>
+                                </ul>
+                                <div class="mapa_home">
+                                    <img src="css/imagens/summoners-rift-map.webp" alt="mapa ">
+                                </div>
+                                <div id="apareceu_lanes">
+                                    <div class="apareceu" id="div_top" style="display: none;">
+                                        <h3>ROTA SUPERIOR</h3>
+                                        <p>
+                                            Campeões na rota superior são os lutadores durões e solitários da equipe. O
+                                            trabalho deles é proteger a própria rota e focar seu dano nos membros mais
+                                            fortes da equipe inimiga.
+                                        </p>
+                                    </div>
+                                    <div class="apareceu" id="div_jungle" style="display: none;">
+                                        <h3>SELVA</h3>
+                                        <p>
+                                            Caçadores vivem pela caça. Espreitando entre as rotas com furtividade e
+                                            habilidade ficam atentos aos monstros da selva mais importantes e avançam no
+                                            momento que o oponente baixar a guarda.
+                                        </p>
+                                    </div>
+                                    <div class="apareceu" id="div_mid" style="display: none;">
+                                        <h3>ROTA DO MEIO</h3>
+                                        <p>
+                                            Campeões da rota do meio são aqueles que possuem alto dano explosivo e podem
+                                            fazer de tudo, sejam sozinhos ou em equipe. Para eles, o combate é uma dança
+                                            perigosa, e nela devem sempre buscar oportunidades para superar seuoponente.
+                                        </p>
+                                    </div>
+                                    <div class="apareceu" id="div_adc" style="display: none;">
+                                        <h3>ROTA INFERIOR</h3>
+                                        <p>
+                                            Campeões da rota inferior são a fonte preciosa de dano de cada equipe e
+                                            precisam ser protegidos no início de jogo até que acumulem ouro e experiência o suficiente para carregar toda a equipe até a vitória.
+                                        </p>
+                                    </div>
+                                    <div class="apareceu" id="div_sup" style="display: none;">
+                                        <h3>SUPORTE</h3>
+                                        <p>
+                                            Campeões Suporte são os guardiões da equipe. Eles ajudam a manter seus
+                                            aliados vivos e focam primordialmente em armar abates, protegendo seu
+                                            parceiro na rota inferior até que fique mais forte.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gameplay-geral">
+                        <div class="gameplay">
+                            <p>Um jogo formado por 5 jogadores de cada lado com opções de 140 campeões para jogar, com 5
+                                funções diferentes para serem jogadas no mapa mais tradicional, conhecido como
+                                Summoner's Rift.</p>
+                            <p class="p1">Após entrar em uma partida 5x5 o objetivo principal será destruir o nexus
+                                inimigo, que está localizado no lado oposto da sua base, você deve defender e atacar ao
+                                mesmo tempo, protegendo as suas torres que atacam os seus inimigos e tentando derrubar
+                                as torres inimigas. </p>
+                            <p>Quem conseguir fazer esse processo até o final da melhor maneira e derrubar o NEXUS
+                                inimigo será o Vitorioso</p>
+                        </div>
+                        <div class="linha"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="introducao">
+            <div class="novo_jogador">
+                <h1>O que um jogador novo deve conhecer</h1>
+                <p>Ao entrar em uma partida de League of Legends que tem uma duração média de 35:00 minutos, temos diversas
+                    opções de modos de jogo apenas no mapa de Summoner's Rift, sendo eles <b
+                        class="destaque">Ranqueados</b> que valem pontos competitivos chamado de PDL e só podem ser jogadas a partir do NÍVEL 30 e temos opções de
+                    banimentos de campeões, partidas <b class="destaque">Normais</b> que pelo nome já dizem que são para
+                    jogadores mais casuais com banimentos de campeões e outro <b class="destaque">Normal sem
+                        banimentos</b>.</p>
+                <div class="ranques">
+                    <div class="titulo">
+                        <h4>Ao jogar partidas Ranqueadas os jogadores se deparam com os seguintes ranques em ordem
+                            crescente</h4>
+                    </div>
+                    <div class="elos">
+                        <ul class="a">
+                            <li style="color: rgb(110, 77, 37); text-shadow: 0px 0px 3px rgb(110, 77, 37);">Ferro</li>
+                            <li style="color: rgb(151, 106, 52); text-shadow: 0px 0px 3px rgb(151, 106, 52);">Bronze
+                            </li>
+                            <li style="color: rgb(92, 88, 96); text-shadow: 0px 0px 3px rgb(92, 88, 96);">Prata</li>
+                            <li style="color: rgb(255, 215, 0); text-shadow: 0px 0px 3px rgb(255, 215, 0);">Ouro</li>
+                            <li style="color: rgb(30, 200, 163); text-shadow: 0px 0px 3px rgb(30, 200, 163);">Platina
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="elos">
+                        <ul>
+                            <li style="color: rgb(30, 160, 40); text-shadow: 0px 0px 3px rgb(30, 160, 40);">Esmeralda
+                            </li>
+                            <li style="color: rgb(30, 166, 200); text-shadow: 0px 0px 3px rgb(30, 166, 200);">Diamante
+                            </li>
+                            <li style="color: rgb(146, 30, 200); text-shadow: 0px 0px 3px rgb(146, 30, 200);">Mestre
+                            </li>
+                            <li style="color: rgb(179, 28, 28); text-shadow: 0px 0px 3px rgb(179, 28, 28);">Grão-Mestre
+                            </li>
+                            <li class="challenger">Challenger</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="estrutura_selva">
+                <div class="estrutura">
+                    <h1>Estruturas</h1>
+                    <div class="div_estrutura">
+                        <div class="p_estrutura">
+                            <p>As torres que cada time possui 11 cada servem como pontos de defesa para impedir que os
+                                inimigos
+                                cheguem do seu Nexus, impedindo também o seu avanço contra a base inimiga, sendo assim,
+                                precisamos derrubar as torres inimigas para conseguir avançar e chegar no objetivo final</p>
+                            <p>Mas além das torres, existe uma estrutura chamada inibidor que serve como punição para caso
+                                você
+                                tenha deixado o inimigo chegar muito perto de sua base, onde as tropas inimiga <b
+                                    class="destaque">"mais informações após o cadastro ;)"</b> estarão mais fortes e te
+                                punindo
+                                constantemente.</p>
+                            <p>A forma mais rápida para chegar ao Nexus inimigo seria destruindo 5 torres e 1 inibidor.</p>
+                        </div>
+                        <div class="torre_inibidor">
+                            <div class="imagemEstrutura">
+                                <h2>Inibidor</h2>
+                                <img src="css/imagens/inibidor.jpg" alt="Imagem de um inibidor">
+                            </div>
+                            <div class="imagemEstrutura">
+                                <h2>Torre</h2>
+                                <img src="css/imagens/torre.jpg" alt="magem de uma torre">
+                            </div>
+                            <div class="imagemEstrutura">
+                                <h2>NEXUS</h2>
+                                <img src="css/imagens/nexus.jpg" alt="Imagem do NEXUS">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="linha"></div>
+                <div class="selva">
+                    <h1>Selva</h1>
+                    <div class="p_selva">
+                        <p>A selva funciona em forma de campos, sendo espelhado com a parte do território inimigo.</p>
+                        <p>Cada campo possui um monstro que deve ser abatido para ganhar experiência e dinheiro, além
+                            desses
+                            campos outros objetivos que estão espalhados pela selva seriam os Dragões onde o primeiro
+                            nasce
+                            aos 5:00 de jogo e o Barão Na'Shor que nasce aos 20:00.</p>
+                    </div>
+                    <div class="monstros">
+                        <div class="monstros_sub">
+                            <div>
+                                <span id="mostrar_krugue">Krugues</span>
+                            </div>
+                            <div>
+                                <span id="mostrar_lobos">Lobos Trevoguari</span>
+                            </div>
+                            <div>
+                                <span id="mostrar_barao">Barão Na'Shor</span>
+                            </div>
+                        </div>
+                        <div class="monstros_sub">
+                            <div>
+                                <span id="mostrar_red" style="color: rgb(200, 29, 29);">Rubrivira RED</span>
+                            </div>
+
+                            <div>
+                                <span id="mostrar_blue" style="color: rgb(29, 86, 200);">Azuporã BLUE</span>
+                            </div>
+                            <div>
+                                <span id="mostrar_aronguejo">Aronguejo</span>
+                            </div>
+                        </div>
+                        <div class="monstros_sub">
+                            <div>
+                                <span id="mostrar_acuamina">Acuâminas</span>
+                            </div>
+                            <div>
+                                <span id="mostrar_grompe">Grompe</span>
+                            </div>
+                            <div>
+                                <span id="mostrar_dragao">Dragão</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <h4>Feito por Nícolas Reis - 2024.1</h4>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    function topo() {
+        div_top.style.display = `block`;
+        div_jungle.style.display = 'none';
+        div_mid.style.display = 'none';
+        div_adc.style.display = 'none';
+        div_sup.style.display = 'none';
+    }
+
+    function jungle() {
+        div_jungle.style.display = `block`;
+        div_top.style.display = 'none';
+        div_mid.style.display = 'none';
+        div_adc.style.display = 'none';
+        div_sup.style.display = 'none';
+    }
+
+    function mid() {
+        div_mid.style.display = `block`;
+        div_top.style.display = 'none';
+        div_jungle.style.display = 'none';
+        div_adc.style.display = 'none';
+        div_sup.style.display = 'none';
+    }
+
+    function adc() {
+        div_adc.style.display = `block`;
+        div_top.style.display = 'none';
+        div_jungle.style.display = 'none';
+        div_mid.style.display = 'none';
+        div_sup.style.display = 'none';
+    }
+
+    function sup() {
+        div_sup.style.display = `block`
+        div_top.style.display = 'none';
+        div_jungle.style.display = 'none';
+        div_mid.style.display = 'none';
+        div_adc.style.display = 'none';
+    }
+
+</script>
