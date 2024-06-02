@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Tempo Real</title>
+    <title>LeagueTech | Perfil</title>
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
@@ -29,7 +29,7 @@
             <div class="header">
                 <div class="usuario">
                     <div class="hello">
-                        <img src="./../css/imagens/yasuo.jpeg" alt="">
+                        <img src="" alt="" id="campeao_do_jogador">
                         <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
                     </div>
                 </div>
@@ -84,12 +84,33 @@
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    var rota_jogador = Number(sessionStorage.ID_ROTA);
+
+    var imagem_do_campeao = document.getElementById('campeao_do_jogador')
 
     let proximaAtualizacao;
 
     window.onload = exibirRankingPessoal();
 
     function exibirRankingPessoal() {
+
+        if (rota_jogador == 1) {
+            imagem_do_campeao.src = './../css/imagens/Darius.jpg'
+
+        } else if(rota_jogador == 2) {
+            imagem_do_campeao.src = './../css/imagens/Rengar.jpg'
+
+        } else if (rota_jogador == 3) {
+            imagem_do_campeao.src = './../css/imagens/yasuo.jpeg'
+
+        } else if (rota_jogador == 4) {
+            imagem_do_campeao.src = './../css/imagens/Draven.jpeg'
+
+        } else {
+            imagem_do_campeao.src = './../css/imagens/Leona.jpg'
+
+        }
+
         let idMinijogo = sessionStorage.idMinijogo;
         obterDadosGraficoPerfil()
         obterTentativasGraficoPerfil()

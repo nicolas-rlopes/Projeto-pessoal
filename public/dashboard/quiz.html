@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
+    <title>LeagueTech | Quiz</title>
     <link rel="stylesheet" href="./../css/estilo.css">
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
@@ -17,16 +17,14 @@
     <div class="fundo_quiz">
         <div class="aviso_quiz" id="aviso_quiz" style="display: none;">
             <span id="mensagem_erro">Preencha todos os campos antes de finalizar o Quiz!</span>
-            <div id="erro_imagem"><img
-                    src="https://i.pinimg.com/originals/d8/14/82/d81482fe0d37418598fd571cf3653b1e.png" alt=""></div>
+            <div id="erro_imagem"><img src="./../css/imagens/erro_imagem.png" alt=""></div>
         </div>
         <div class="conteudo_quiz">
             <div class="janela">
                 <div class="header">
                     <div class="usuario">
                         <div class="hello">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUf6Ts0Tw2N_J5xiqjICUCz_z0qSTzAJpoFbdkF6xXEQ&s"
-                                alt="">
+                            <img src="" alt="" id="campeao_do_jogador">
                             <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
                         </div>
                     </div>
@@ -216,6 +214,31 @@
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    var rota_jogador = Number(sessionStorage.ID_ROTA);
+
+    var imagem_do_campeao = document.getElementById('campeao_do_jogador')
+
+    window.onload = exibirFotoPerfil(); 
+
+    function exibirFotoPerfil() {
+        
+        if (rota_jogador == 1) {
+            imagem_do_campeao.src = './../css/imagens/Darius.jpg'
+
+        } else if(rota_jogador == 2) {
+            imagem_do_campeao.src = './../css/imagens/Rengar.jpg'
+
+        } else if (rota_jogador == 3) {
+            imagem_do_campeao.src = './../css/imagens/yasuo.jpeg'
+
+        } else if (rota_jogador == 4) {
+            imagem_do_campeao.src = './../css/imagens/Draven.jpeg'
+
+        } else {
+            imagem_do_campeao.src = './../css/imagens/Leona.jpg'
+
+        }
+    }
 
     var respostas_certas = ['27 de outubro de 2009', '5', '140', 'Destruindo o Nexus do inimigo', 'Barão NaShor', 'Blue e Red | Azul e Vermelho', 'Nível 30', 'Reporta-lo ao final da partida e esperar que ele seja punido', '10 Ranques', '22 Torres'];
     var respostas_inseridas = [];

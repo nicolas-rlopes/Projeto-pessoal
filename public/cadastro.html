@@ -40,7 +40,7 @@
             <div class="card_erro" id="cardErro">
                 <div class="erro">
                     <span id="mensagem_erro"></span>
-                    <div id="erro_imagem"><img src="https://i.pinimg.com/originals/d8/14/82/d81482fe0d37418598fd571cf3653b1e.png" alt=""></div>
+                    <div id="erro_imagem"><img src="./css/imagens/erro_imagem.png" alt=""></div>
                 </div>
             </div>
         </div>
@@ -121,7 +121,7 @@
         ) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML =
-                "Mensagem de erro para todos os campos em branco";
+                "Preencha todos os campos necessários";
 
             finalizarAguardar();
             return false;

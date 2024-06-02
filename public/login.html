@@ -36,6 +36,7 @@
         <div class="alerta_erro">
             <div class="card_erro" id="cardErro">
                 <span id="mensagem_erro" ></span>
+                <div id="erro_imagem"><img src="./css/imagens/erro_imagem.png" alt=""></div>
             </div>
         </div>
         <div class="container">
@@ -83,12 +84,12 @@
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagem_erro.innerHTML = "Preencha todos os campos necessários";
             finalizarAguardar();
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 3000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
