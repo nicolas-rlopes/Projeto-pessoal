@@ -1071,11 +1071,16 @@ input {
   height: 100px;
   position: absolute;
   background-color: white;
-  border: 2px solid black;
-  background-image: url(imagens/yasuo.jpeg);
-  background-size: cover;
+  border: 1px solid black;
+  box-shadow: 0px 0px 3px black;
   transition: 0.1s linear;
 } 
+
+#div_campeao img{
+  width: 100%;
+  height: 100%;
+  
+}
 
 .minion {
   display: flex;
@@ -1113,8 +1118,7 @@ input {
 .minigame .torre {
   display: flex;
   flex-direction: column-reverse;
-  background-image: url(imagens/torre);
-  background-repeat: no-repeat;
+
 }
 
 .torre img {

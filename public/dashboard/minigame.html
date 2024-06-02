@@ -36,7 +36,7 @@
             </div>
         </div>
         <div id="div_fundo"></div>
-        <div id="div_campeao"></div>
+        <div id="div_campeao"><img src="../css/imagens/Leona.jpg" alt="" id="campeao_do_jogador"></div>
 
         <div id="div_minion"></div>
         <div id="vida_minion" style="width: 100px;"></div>
@@ -50,6 +50,7 @@
 </html>
 
 <script>
+
 
     var vidaMinion = vida_minion.value;
     var vidaMinion2 = vida_minion2.value;
@@ -78,6 +79,29 @@
     div_campeao.style.top = `${global_top_campeao}${unidade_medida}`; // campeão
     div_campeao.style.left = `${global_left_campeao}${unidade_medida}`;
 
+    var rota_jogador = Number(sessionStorage.ID_ROTA);
+    var imagem_do_campeao = document.getElementById('campeao_do_jogador');
+
+    window.onload = mudar_campeao()
+
+    function mudar_campeao() {
+        if (rota_jogador == 1) {
+            imagem_do_campeao.src = '../css/imagens/Darius.jpg'
+
+        } else if(rota_jogador == 2) {
+            imagem_do_campeao.src = '../css/imagens/Rengar.jpg'
+
+        } else if (rota_jogador == 3) {
+            imagem_do_campeao.src = '../css/imagens/yasuo.jpeg'
+
+        } else if (rota_jogador == 4) {
+            imagem_do_campeao.src = '../css/imagens/Jinx.jpeg'
+
+        } else {
+            imagem_do_campeao.src = '../css/imagens/Leona.jpg'
+
+        }
+    }
 
     function mover_nuvem(event) { // "event" é o parâmetro/valor que será recebido pela função "mover_nuvem()" quando ela for invocada ao pressionar a tecla
         if (event.key != "ArrowDown" || event.key != "ArrowUp" || event.key != "ArrowLeft" || event.key != "ArrowRight") {

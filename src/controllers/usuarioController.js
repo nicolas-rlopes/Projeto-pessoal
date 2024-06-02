@@ -28,6 +28,7 @@ function autenticar(req, res) {
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
+                                        rotaId: resultadoAutenticar[0].rotaId,
                                         aquarios: resultadoAquarios
                                     });
                                 } else {
