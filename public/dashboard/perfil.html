@@ -18,73 +18,90 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
+    <div class="fundo-do-fundo">
+        <div class="fundo_perfil">
+            <div class="janela">
 
-    <div class="janela">
+                <div class="janela">
+                    <div class="header">
+                        <div class="usuario">
+                            <div class="hello">
+                                <img src="" alt="" id="campeao_do_jogador">
+                                <h3></h3>
+                            </div>
+                        </div>
 
-        <div class="janela">
-            <div class="header">
-                <div class="usuario">
-                    <div class="hello">
-                        <img src="" alt="" id="campeao_do_jogador">
-                        <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                        <div class="header-left">
+
+                            <div class="btn-nav">
+                                <a href="./pos-cadastro.html">
+                                    <h3>Inicial</h3>
+                                </a>
+                            </div>
+
+                            <div class="btn-nav">
+                                <a href="./perfil.html">
+                                    <h3>Perfil</h3>
+                                </a>
+                            </div>
+
+                            <div class="btn-nav">
+                                <a href="./minigame.html">
+                                    <h3>Minigame</h3>
+                                </a>
+                            </div>
+
+                            <div class="btn-nav">
+                                <a href="./quiz.html">
+                                    <h3>Quiz</h3>
+                                </a>
+                            </div>
+
+                            <div class="btn-logout" onclick="limparSessao()">
+                                <h3>Sair</h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="header-left">
+            </div>
 
-                    <div class="btn-nav">
-                        <a href="./pos-cadastro.html">
-                            <h3>Inicial</h3>
-                        </a>
+            <div class="conteudo-perfil">
+                <div class="informacoes-pessoais">
+                    <div class="info-pessoal">
+                        <h1>Informações de cadastro</h1>
+                        <h2>Nome - <span id="b_usuario">usuário</span></h2>
+                        <h2>Email - <span id="b_email"></span> </h2>
+                        <h2>Rota escolhida - <span id="b_rota"></span></h2>
+                        <h2><span id="b_id"></span>º a se registrar</h2>                      
                     </div>
-
-                    <div class="btn-nav">
-                        <a href="./perfil.html">
-                            <h3>Perfil</h3>
-                        </a>
+                </div>
+                <h1 style="text-align: center;">Seu histórico de atividades</h1>
+                <div class="ranking-display">
+                    <div class="ranking">
+                        <span style="display: flex; justify-content: center; font-weight: bold;">Melhores pontuações da 1ª Melhor até a 5ª Melhor</span>
+                        <canvas id="myChartCanvas" style="position: relative;"></canvas>
                     </div>
-
-                    <div class="btn-nav">
-                        <a href="./minigame.html">
-                            <h3>Minigame</h3>
-                        </a>
-                    </div>
-
-                    <div class="btn-nav">
-                        <a href="./quiz.html">
-                            <h3>Quiz</h3>
-                        </a>
-                    </div>
-
-                    <div class="btn-logout" onclick="limparSessao()">
-                        <h3>Sair</h3>
+                    <div class="linha"></div>
+                    <div class="ranking">
+                        <span style="display: flex; justify-content: center; font-weight: bold;">Suas últimas 3 tentativas no quiz</span>
+                        <canvas id="myChartCanvas2" style="position: relative;"></canvas>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
-    <div>
-        <div class="ranking-display">
-            <div class="ranking">
-                <canvas id="myChartCanvas" style="position: relative;"></canvas>
-            </div>
-            <div class="ranking">
-                <canvas id="myChartCanvas2" style="position: relative;"></canvas>
-            </div>
-        </div>
-    </div>
-
 </body>
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_email.innerHTML = sessionStorage.EMAIL_USUARIO;
     var rota_jogador = Number(sessionStorage.ID_ROTA);
+    b_id.innerHTML = sessionStorage.ID_USUARIO;
 
     var imagem_do_campeao = document.getElementById('campeao_do_jogador')
 
@@ -96,18 +113,23 @@
 
         if (rota_jogador == 1) {
             imagem_do_campeao.src = './../css/imagens/Darius.jpg'
+            b_rota.innerHTML = 'Topo'
 
-        } else if(rota_jogador == 2) {
+        } else if (rota_jogador == 2) {
             imagem_do_campeao.src = './../css/imagens/Rengar.jpg'
+            b_rota.innerHTML = 'Jungler'
 
         } else if (rota_jogador == 3) {
             imagem_do_campeao.src = './../css/imagens/yasuo.jpeg'
+            b_rota.innerHTML = 'Mid'
 
         } else if (rota_jogador == 4) {
             imagem_do_campeao.src = './../css/imagens/Draven.jpeg'
+            b_rota.innerHTML = 'Atirador'
 
         } else {
             imagem_do_campeao.src = './../css/imagens/Leona.jpg'
+            b_rota.innerHTML = 'Suporte'
 
         }
 
@@ -134,7 +156,7 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    
+
     function obterDadosGraficoPerfil(idMinijogo) {
         let nomeUsuario = sessionStorage.NOME_USUARIO;
         // alterarTitulo(idMinijogo)
@@ -168,7 +190,13 @@
 
         console.log('iniciando plotagem do gráfico...');
 
-        var labels = respostaPerfil.map(el => el.nome);
+        var labels = [
+            '1º',
+            '2º',
+            '3º',
+            '4º',
+            '5º'
+        ];
         // Criando estrutura para plotar gráfico - labels
         // let labels = [
         // 'TOP 1',
@@ -211,11 +239,6 @@
                     labels: {
                         color: '#C89B3C' // Cor das labels da legenda
                     }
-                },
-                title: {
-                    display: true,
-                    text: 'Gráfico de Pontuação',
-                    color: '#C89B3C' // Cor do título
                 }
             }
         };
@@ -261,7 +284,7 @@
 
     function obterTentativasGraficoPerfil() {
         let nomeUsuario = sessionStorage.NOME_USUARIO;
-        
+
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
@@ -313,7 +336,7 @@
                 color: '#fff'
             },
             {
-                
+
                 label: 'Erros',
                 data: respostaPerfil.map(el => el.erros),
                 backgroundColor: '#E81E1E',
@@ -329,25 +352,20 @@
             scales: {
                 x: {
                     ticks: {
-                        color: '#C89B3C' // Cor das labels do eixo X
+                        color: '#C89B3C'
                     }
                 },
                 y: {
                     ticks: {
-                        color: '#C89B3C' // Cor das labels do eixo Y
+                        color: '#C89B3C' 
                     }
                 }
             },
             plugins: {
                 legend: {
                     labels: {
-                        color: '#C89B3C' // Cor das labels da legenda
+                        color: '#C89B3C'
                     }
-                },
-                title: {
-                    display: true,
-                    text: 'Suas últimas tentativas',
-                    color: '#C89B3C' // Cor do título
                 }
             }
         };

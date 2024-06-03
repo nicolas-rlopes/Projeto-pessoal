@@ -28,7 +28,7 @@
             <div class="usuario">
                 <div class="hello">
                     <img src="" alt="" id="campeao_do_jogador">
-                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3> 
+                    <h3><span id="b_usuario">usuário</span>!</h3> 
                 </div>
             </div>
 
@@ -66,11 +66,18 @@
     </div>
 
     <div class="conteudo_pos-cadastro">
-        <div class="index-cadastro">
-            No LeagueTech você aprenderá sobre o jogo jogando, com esses quizes,
+        <div class="index-cadastro1">
+            <div class="texto-pos-cadastro">
+                <h2>Bem-Vindo</h2>
+                <p>No LeagueTech você aprenderá sobre o jogo League of Legends jogando um minigame e fazendo um quiz que testa o seu conhecimento que pode ser aprendido na pagina inicial do site.</p>
+                <p>Como você fez um cadastro no LeagueTech, você se interessou pelo jogo ou está tentando aprender alguns dos valores que eu considero importante e que eu adquiri durante toda a minha jornada de quase 10 anos jogando esse jogo.</p>
+                <h2>Faça parte dessa comunidade</h2>
+                <h4>Quando todos estão juntos, fazemos ainda mais.</h4>
+                <p>Uma comunidade unida consegue quebrar barreiras e muitas bolhas, uma ajuda que é essencial em todas as etapas das vidas, continue jogando o mini game para interagir com essa pequena comunidade que formamos. Juntos e Sempre.</p>
+            </div>
         </div>
         <div class="linha"></div>
-        <div class="index-cadastro">
+        <div class="index-cadastro2">
             <h1>Melhores Jogadores do <b
                     style=" color: rgb(2, 14, 23); text-shadow: 0px 0px 10px #020e17c7; background-color: rgb(240, 230, 210); padding: 5px; border-radius: 10px;">Minigame</b>
             </h1>
@@ -79,7 +86,6 @@
                     <canvas id="myChartCanvas" style="position: relative;"></canvas>
                 </div>
             </div>
-            Aqui vai ficar os graficos mostrando o rankig de todos os usuarios
         </div>
     </div>
 
@@ -192,12 +198,11 @@
             labels: labels,
             datasets: [{
                 label: 'Pontuação',
-                data: resposta.map(el => el.pontuacao),
-                backgroundColor: '#CDFAFA',
-                borderColor: '#3C3C41',
-                borderWidth: 3,
+                data: resposta.map(el => el.pontuacaoMaxima),
+                backgroundColor: '#C89B3C',
+                borderColor: '#32281E',
+                borderWidth: 2,
                 borderSkipped: false,
-                tension: 0.1,
                 color: '#fff'
             }]
         };
@@ -205,26 +210,21 @@
         let options = {
             scales: {
                 x: {
-                    ticks: {
-                        color: '#C89B3C' // Cor das labels do eixo X
+                    ticks: { // Cor dos nomes
+                        color: '#A09B8C' 
                     }
                 },
                 y: {
-                    ticks: {
-                        color: '#C89B3C' // Cor das labels do eixo Y
+                    ticks: { // Cor da pontuação
+                        color: '#A09B8C' 
                     }
                 }
             },
             plugins: {
                 legend: {
-                    labels: {
-                        color: '#C89B3C' // Cor das labels da legenda
+                    labels: { // Cor da legenda na cor
+                        color: '#A09B8C' 
                     }
-                },
-                title: {
-                    display: true,
-                    text: 'Gráfico de Pontuação',
-                    color: '#C89B3C' // Cor do título
                 }
             }
         };
