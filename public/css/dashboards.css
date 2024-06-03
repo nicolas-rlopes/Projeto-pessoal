@@ -517,3 +517,99 @@ canvas {
   border: 1px solid #e2b249;
   box-shadow: 0px 0px 5px #e2b249;
 }
+
+.tutorial {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0.;
+  background-image: url(imagens/lane.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.como-jogar {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.how-to-play {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.caixa-tutorial {
+  padding: 15px;
+  border: 3px solid rgb(121, 93, 32);
+  background: rgb(2, 14, 23);
+  color: #cbbe8f;
+  font-size: 25px;
+  box-shadow: 0px 0px 15px rgb(2, 14, 23);
+}
+
+.caixa-tutorial h1{
+  margin: 0px;
+  text-align: center;
+}
+
+.caixa-tutorial ul{
+  list-style: none;
+  padding: 0;
+  height: fit-content;
+  width: fit-content;
+  font-weight: bold;
+  display: flex;
+  margin: 10px;
+  width: 920px;
+  justify-content: space-between;
+}
+
+.tecla-frase {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.teclas {
+  border: 3px solid rgb(121, 93, 32);
+  background-color: rgb(30, 35, 40);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  margin: 0px 10px 10px 0px;
+  color: #cbbe8f;
+}
+
+.abaixo-tutorial {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 40px;
+}
+
+.voltar-comecar {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 50px;
+  border: 3px solid rgb(121, 93, 32);
+  background-color: rgb(2, 14, 23);
+  font-size: 25px;
+  font-weight: bold;
+  box-shadow: 0px 0px 5px rgb(2, 14, 23);
+}
+
+.voltar-comecar a{
+  text-decoration: none;
+  color: #cbbe8f;
+}
+
+.voltar-comecar:hover {
+  background-color: rgba(2, 14, 23, 0.804);
+  box-shadow: 0px 0px 5px #e2b1495e;
+}

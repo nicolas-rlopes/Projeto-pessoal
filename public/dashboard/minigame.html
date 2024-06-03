@@ -50,7 +50,7 @@
 </html>
 
 <script>
-
+    
 
     var vidaMinion = vida_minion.value;
     var vidaMinion2 = vida_minion2.value;
@@ -126,6 +126,9 @@
         if (event.key == "Escape") {
             encerrar.style.display = 'block'
         }
+        if (event.key == "'") {
+            encerrar.style.display = 'none'
+        }
 
         if (event.key == "q") {
             div_verPontos.innerHTML = `Você já abateu ${pontos} minions`
@@ -179,15 +182,34 @@
         var bateuTopo2 = info_div_minion2.top < info_div_campeao.bottom;
         var bateuAbaixo2 = info_div_minion2.bottom > info_div_campeao.top;
 
+        var valorDiminuindo = 0;
+
+        if (rota_jogador == 1) {
+            valorDiminuindo = 20
+
+        } else if(rota_jogador == 2) {
+            valorDiminuindo = 20
+
+        } else if (rota_jogador == 3) {
+            valorDiminuindo = 50
+
+        } else if (rota_jogador == 4) {
+            valorDiminuindo = 20
+
+        } else {
+            valorDiminuindo = 20
+
+        }
+
         if (bateuDireita1 && bateuEsquerda1 && bateuTopo1 && bateuAbaixo1) {
             var largura_atual = parseFloat(vida_minion.style.width);
-            var valorDiminuindo = 10
+            
             vida_minion.style.width = `${largura_atual - valorDiminuindo}px`
         }
 
         if (bateuDireita2 && bateuEsquerda2 && bateuTopo2 && bateuAbaixo2) {
             var largura_atual = parseFloat(vida_minion2.style.width);
-            var valorDiminuindo = 10
+            
             vida_minion2.style.width = `${largura_atual - valorDiminuindo}px`
 
         }
