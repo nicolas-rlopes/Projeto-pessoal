@@ -35,6 +35,11 @@ constraint fkQuizUsuario foreign key (fkUsuario)
 	references usuario(id),
 primary key (tentativa, fkUsuario)
 );
+
+SELECT tentativa, acertos, erros, usuario.nome FROM quiz JOIN usuario ON fkUsuario = usuario.id WHERE nome = 'ppp' ORDER BY tentativa DESC;
+
+SELECT tentativa, acertos, erros, usuario.nome FROM quiz JOIN usuario ON fkUsuario = usuario.id WHERE nome = 'ppp' ORDER BY tentativa DESC LIMIT 3;
+
 select * from usuario;
 select * from quiz;
 
@@ -46,6 +51,56 @@ constraint fkJogoUsuario foreign key (fkUsuario)
 	references usuario(id)
 );
 
+SELECT pontuacao, MINIJOGO.ID, nome FROM minijogo JOIN usuario ON fkUsuario = usuario.id
+                   WHERE nome = 'Nícolas Reis' ORDER BY pontuacao DESC LIMIT 5 ;
+                   
+SELECT pontuacao, MINIJOGO.ID, nome FROM minijogo JOIN usuario ON fkUsuario = usuario.id
+                   WHERE nome = 'ppp' ORDER BY pontuacao DESC LIMIT 5 ;
+                   
+SELECT pontuacao, MINIJOGO.ID, nome FROM minijogo JOIN usuario ON fkUsuario = usuario.id
+                        WHERE nome = 'Nícolas Reis' ORDER BY pontuacao DESC LIMIT 5;
+
+select * from minijogo;	
+select pontuacao, fkUsuario from minijogo 
+	order by pontuacao desc
+    limit 5;
+    
+SELECT pontuacao, fkUsuario, nome FROM minijogo JOIN usuario on fkUsuario = usuario.id ORDER BY pontuacao DESC LIMIT 5; 
+ 
+select pontuacao, fkUsuario from minijogo;
+
 select * from minijogo;
 
 SELECT * FROM usuario;
+
+select * from rota;
+
+
+select distinct pontuacao, fkUsuario from minijogo order by pontuacao desc limit 5;
+
+SELECT minigame.pontuacaoMaxima,
+		minigame.fkUsuario,
+		usuario.nome FROM 
+			(SELECT MAX(pontuacao) AS pontuacaoMaxima,
+			fkUsuario from minijogo
+			GROUP BY fkUsuario) AS minigame
+				JOIN usuario ON minigame.fkUsuario = usuario.id
+				ORDER BY minigame.pontuacaoMaxima 
+				DESC LIMIT 5;
+
+select minigame.pontuacaoMaxima, minigame.fkUsuario, usuario.nome from 
+	(select max(pontuacao) as pontuacaoMaxima, minijogo.fkUsuario from minijogo group by minijogo.fkUsuario) as minigame
+    join usuario
+    on fkUsuario = usuario.id
+    order by pontuacaoMaxima
+    desc limit 5;
+    
+
+SELECT MAX(pontuacao) AS pontuacaoMaxima,
+			fkUsuario from minijogo
+			GROUP BY fkUsuario;
+            
+select * from minijogo;
+select * from usuario;
+
+

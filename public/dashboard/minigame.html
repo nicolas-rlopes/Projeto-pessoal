@@ -25,7 +25,9 @@
             <button onclick="finalizar()" class="botao" id="encerrar" style="display: none">Encerrar Jogo</button>
             <div class="abatidos" id="abatidos">
                 <div id="div_verPontos" style="display: none;"></div>
+                <div id="habilidade_a">A</div>
             </div>
+
             <div id="div_derrota" style="display: none;">
                 <img src="../css/imagens/defeat.png" alt="">
                 <button onclick="voltar()" class="botao">Voltar ao Menu</button>
@@ -36,7 +38,9 @@
             </div>
         </div>
         <div id="div_fundo"></div>
-        <div id="div_campeao"><img src="../css/imagens/Leona.jpg" alt="" id="campeao_do_jogador"></div>
+        <div id="div_habilidade" style="display: none;"><img id="imagem_habilidade_a" src="../css/imagens/HABILIDADE-YASUO.webp" alt="">
+        </div>
+        <div id="div_campeao"><img src="" alt="" id="campeao_do_jogador"></div>
 
         <div id="div_minion"></div>
         <div id="vida_minion" style="width: 100px;"></div>
@@ -50,13 +54,18 @@
 </html>
 
 <script>
-    
+    var tempo = 6;
+
+    var valorDiminuindo = 0;
+    var valorDiminuindoHabilidade = 0
 
     var vidaMinion = vida_minion.value;
     var vidaMinion2 = vida_minion2.value;
 
     var global_top_campeao = 313; // distância atual entre o elemento e o topo da página
     var global_left_campeao = 500; // distância atual entre o elemento e a lateral esquerda da página
+    var global_top_habilidade = 313;
+    var global_left_habilidade = 300
 
     var global_top_minion = 413;
     var global_left_minion = 0;
@@ -76,6 +85,8 @@
     var velocidade = 100;
     var quinze_abates = pontos % 5
 
+    div_habilidade.style.top = `${global_top_habilidade}${unidade_medida}`;
+    div_habilidade.style.left = `${global_left_habilidade}${unidade_medida}`;
     div_campeao.style.top = `${global_top_campeao}${unidade_medida}`; // campeão
     div_campeao.style.left = `${global_left_campeao}${unidade_medida}`;
 
@@ -86,19 +97,24 @@
 
     function mudar_campeao() {
         if (rota_jogador == 1) {
-            imagem_do_campeao.src = '../css/imagens/Darius.jpg'
+            imagem_do_campeao.src = '../css/imagens/Darius.jpg';
+            imagem_habilidade_a.src = '../css/imagens/HABILIDADE-DARIUS.webp';
 
-        } else if(rota_jogador == 2) {
-            imagem_do_campeao.src = '../css/imagens/Rengar.jpg'
+        } else if (rota_jogador == 2) {
+            imagem_do_campeao.src = '../css/imagens/Rengar.jpg';
+            imagem_habilidade_a.src = '../css/imagens/HABILIDADE-RENGAR.webp';
 
         } else if (rota_jogador == 3) {
-            imagem_do_campeao.src = '../css/imagens/yasuo.jpeg'
+            imagem_do_campeao.src = '../css/imagens/yasuo.jpeg';
+            imagem_habilidade_a.src = '../css/imagens/HABILIDADE-YASUO.webp';
 
         } else if (rota_jogador == 4) {
-            imagem_do_campeao.src = '../css/imagens/Draven.jpeg'
+            imagem_do_campeao.src = '../css/imagens/Draven.jpeg';
+            imagem_habilidade_a.src = '../css/imagens/HABILIDADE-DRAVENwebp.webp';
 
         } else {
-            imagem_do_campeao.src = '../css/imagens/Leona.jpg'
+            imagem_do_campeao.src = '../css/imagens/Leona.jpg';
+            imagem_habilidade_a.src = '../css/imagens/HABILIDADE-LEONA.webp';
 
         }
     }
@@ -115,19 +131,33 @@
         // no evento, temos qual tecla foi pressionada (atributo ".key")
         if (event.key == "ArrowDown") {
             global_top_campeao += 30;
+            global_top_habilidade += 30;
         } else if (event.key == "ArrowUp") {
             global_top_campeao -= 30;
+            global_top_habilidade -= 30;
         } else if (event.key == "ArrowLeft") {
             global_left_campeao -= 30;
+            global_left_habilidade -= 30;
         } else if (event.key == "ArrowRight") {
             global_left_campeao += 30;
+            global_left_habilidade += 30;
         }
+
 
         if (event.key == "Escape") {
             encerrar.style.display = 'block'
         }
         if (event.key == "'") {
             encerrar.style.display = 'none'
+        }
+
+        if (event.key == "a" && habilidade_a.innerHTML == "A") {
+            div_habilidade.style.display = 'block';
+
+            habilidade_a.innerHTML = `${tempo}`;
+            
+            intervalo_de_habilidade = setInterval(tempo_recarga, 1000);
+
         }
 
         if (event.key == "q") {
@@ -145,13 +175,17 @@
 
         if (global_left_campeao < 0) {
             global_left_campeao = 0
+            global_left_habilidade = -200
         } else if (global_left_campeao >= 1273) {
             global_left_campeao = 1273
+            global_left_habilidade = 1073
         }
         if (global_top_campeao < 0) {
             global_top_campeao = 0
-        } else if (global_top_campeao >= 627) {
-            global_top_campeao = 627
+            global_top_habilidade = 0
+        } else if (global_top_campeao >= 616) {
+            global_top_campeao = 616
+            global_top_habilidade = 616
         }
 
         if (vida_top_minion < 0) {
@@ -160,6 +194,8 @@
             global_top_campeao = 627
         }
 
+        div_habilidade.style.top = `${global_top_habilidade}${unidade_medida}`; // campeão
+        div_habilidade.style.left = `${global_left_habilidade}${unidade_medida}`;
         div_campeao.style.top = `${global_top_campeao}${unidade_medida}`; // campeão
         div_campeao.style.left = `${global_left_campeao}${unidade_medida}`;
 
@@ -169,6 +205,7 @@
         var info_div_campeao = div_campeao.getBoundingClientRect();
         var info_div_minion = div_minion.getBoundingClientRect();
         var info_div_minion2 = div_minion2.getBoundingClientRect();
+        var info_div_habilidade = div_habilidade.getBoundingClientRect();
 
         //minion 1
         var bateuDireita1 = info_div_minion.right > info_div_campeao.left;
@@ -182,44 +219,116 @@
         var bateuTopo2 = info_div_minion2.top < info_div_campeao.bottom;
         var bateuAbaixo2 = info_div_minion2.bottom > info_div_campeao.top;
 
-        var valorDiminuindo = 0;
+        //habilidade batendo no minion 2
+        var bateuDireitaH2 = info_div_minion2.right > info_div_habilidade.left;
+        var bateuEsquerdaH2 = info_div_minion2.left < info_div_habilidade.right;
+        var bateuTopoH2 = info_div_minion2.top < info_div_habilidade.bottom;
+        var bateuAbaixoH2 = info_div_minion2.bottom > info_div_habilidade.top;
+
+        //habilidade batendo no minion 1
+        var bateuDireitaH1 = info_div_minion.right > info_div_habilidade.left;
+        var bateuEsquerdaH1 = info_div_minion.left < info_div_habilidade.right;
+        var bateuTopoH1 = info_div_minion.top < info_div_habilidade.bottom;
+        var bateuAbaixoH1 = info_div_minion.bottom > info_div_habilidade.top;
+
+        
 
         if (rota_jogador == 1) {
             valorDiminuindo = 20
+            valorDiminuindoHabilidade = 30
 
-        } else if(rota_jogador == 2) {
+        } else if (rota_jogador == 2) {
             valorDiminuindo = 20
+            valorDiminuindoHabilidade = 40
 
         } else if (rota_jogador == 3) {
-            valorDiminuindo = 50
+            valorDiminuindo = 20
+            valorDiminuindoHabilidade = 40
 
         } else if (rota_jogador == 4) {
             valorDiminuindo = 20
+            valorDiminuindoHabilidade = 40
 
         } else {
-            valorDiminuindo = 20
+            valorDiminuindo = 10
+            valorDiminuindoHabilidade = 20
 
         }
 
         if (bateuDireita1 && bateuEsquerda1 && bateuTopo1 && bateuAbaixo1) {
             var largura_atual = parseFloat(vida_minion.style.width);
-            
+
             vida_minion.style.width = `${largura_atual - valorDiminuindo}px`
         }
 
         if (bateuDireita2 && bateuEsquerda2 && bateuTopo2 && bateuAbaixo2) {
             var largura_atual = parseFloat(vida_minion2.style.width);
-            
-            vida_minion2.style.width = `${largura_atual - valorDiminuindo}px`
 
+            vida_minion2.style.width = `${largura_atual - valorDiminuindo}px`
+        }
+
+        if (bateuDireitaH1 && bateuEsquerdaH1 && bateuTopoH1 && bateuAbaixoH1) {
+            var largura_atual = parseFloat(vida_minion.style.width);
+
+            if (valorDiminuindoHabilidade > largura_atual) {
+                vida_minion.style.width = `${largura_atual - largura_atual}px`
+            } else {
+                vida_minion.style.width = `${largura_atual - valorDiminuindoHabilidade}px`
+            }
+        }
+
+        if (bateuDireitaH2 && bateuEsquerdaH2 && bateuTopoH2 && bateuAbaixoH2) {
+            var largura_atual = parseFloat(vida_minion2.style.width);
+
+            vida_minion2.style.width = `${largura_atual - valorDiminuindoHabilidade}px`
+
+            if (valorDiminuindoHabilidade > largura_atual) {
+                vida_minion2.style.width = `${largura_atual - largura_atual}px`
+            } else {
+                vida_minion2.style.width = `${largura_atual - valorDiminuindoHabilidade}px`
+            }
         }
     }
 
+    function tempo_recarga() {
 
+        tempo -= 1
+
+        habilidade_a.innerHTML = `${tempo}`
+        if (tempo == 4) {
+            div_habilidade.style.display = 'none';
+        }
+
+        if (tempo == 0) {
+            
+            clearInterval(intervalo_de_habilidade)
+            habilidade_a.innerHTML = `A`
+            tempo = 6;
+        }
+    }
 
     function mover_sozinho() {
-        global_left_minion += 10; // incrementa a distância do lado esquerdo em 1 
-        vida_left_minion += 10;
+
+        if (rota_jogador == 1) {
+            global_left_minion += 10;
+            vida_left_minion += 10;
+
+        } else if (rota_jogador == 2) {
+            global_left_minion += 10;
+            vida_left_minion += 10;
+
+        } else if (rota_jogador == 3) {
+            global_left_minion += 10;
+            vida_left_minion += 10;
+
+        } else if (rota_jogador == 4) {
+            global_left_minion += 10;
+            vida_left_minion += 10;
+
+        } else {
+            global_left_minion += 5;
+            vida_left_minion += 5;
+        }
 
         div_minion.style.top = `${global_top_minion}${unidade_medida}`; // minion
         div_minion.style.left = `${global_left_minion}${unidade_medida}`;
@@ -275,13 +384,13 @@
 
             var cinco_abates = pontos % 2;
 
-            if(velocidade == 50) {
+            if (velocidade == 50) {
                 velocidade = 50
             } else if (cinco_abates == 0 && pontos != 0) {
-                velocidade -= 2;      
+                velocidade -= 2;
             }
         }
-        
+
         clearInterval(intervalo);
         intervalo = setInterval(mover_sozinho, velocidade)
     }
@@ -289,8 +398,27 @@
     var intervalo = setInterval(mover_sozinho, velocidade);
 
     function mover_sozinho2() {
-        global_left_minion2 += 10; // incrementa a distância do lado esquerdo em 1 
-        vida_left_minion2 += 10;
+
+        if (rota_jogador == 1) {
+            global_left_minion2 += 10;
+            vida_left_minion2 += 10;
+
+        } else if (rota_jogador == 2) {
+            global_left_minion2 += 10;
+            vida_left_minion2 += 10;
+
+        } else if (rota_jogador == 3) {
+            global_left_minion2 += 10;
+            vida_left_minion2 += 10;
+
+        } else if (rota_jogador == 4) {
+            global_left_minion2 += 10;
+            vida_left_minion2 += 10;
+
+        } else {
+            global_left_minion2 += 5;
+            vida_left_minion2 += 5;
+        }
 
         div_minion2.style.top = `${global_top_minion2}${unidade_medida}`; // minion 2
         div_minion2.style.left = `${global_left_minion2}${unidade_medida}`;
@@ -333,10 +461,10 @@
 
             var cinco_abates = pontos % 2;
 
-            if(velocidade == 50) {
+            if (velocidade == 50) {
                 velocidade = 50
             } else if (cinco_abates == 0 && pontos != 0) {
-                velocidade -= 2;      
+                velocidade -= 2;
             }
         }
         clearInterval(intervalo2);
@@ -390,11 +518,11 @@
                     pontuacaoServer: pontuacaoVar,
                     fkUsuarioServer: fkUsuarioVar
                 }),
-            }).then(function(resposta){
+            }).then(function (resposta) {
                 resposta.json()
-                .then(function(resposta){
-                    sessionStorage.idMinijogo=resposta.insertId
-                })
+                    .then(function (resposta) {
+                        sessionStorage.idMinijogo = resposta.insertId
+                    })
             })
         }
 

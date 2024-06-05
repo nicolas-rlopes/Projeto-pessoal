@@ -1076,6 +1076,36 @@ input {
   transition: 0.1s linear;
 } 
 
+#div_habilidade {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-color: black;
+  transition: 0.1s linear;
+} 
+
+#div_habilidade img{
+  height: 100px;
+  width: 200px;
+} 
+
+#habilidade_a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  left: 713px;
+  background-color: #010A13;
+  border: 2px solid #795d20;
+  padding: 20px;
+  margin-bottom: 20px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
 #div_campeao img{
   width: 100%;
   height: 100%;

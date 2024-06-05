@@ -519,10 +519,10 @@ canvas {
 }
 
 .tutorial {
-  background-color: white;
+  background-color: black;
   height: 100vh;
   width: 100vw;
-  opacity: 0.;
+  opacity: 0.8;
   background-image: url(imagens/lane.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -535,10 +535,10 @@ canvas {
 }
 
 .how-to-play {
-    display: flex;
-    justify-content: center;
-    height: 100%;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  flex-direction: column;
 }
 
 .caixa-tutorial {
@@ -548,11 +548,25 @@ canvas {
   color: #cbbe8f;
   font-size: 25px;
   box-shadow: 0px 0px 15px rgb(2, 14, 23);
+  width: 950px;
 }
 
 .caixa-tutorial h1{
   margin: 0px;
   text-align: center;
+}
+
+.texto-tutorial {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.caixa-tutorial p {
+  width: 800px;
+  font-size: 24px;
+  text-align: center;
+  margin: 5px 0px;
 }
 
 .caixa-tutorial ul{
@@ -565,6 +579,12 @@ canvas {
   margin: 10px;
   width: 920px;
   justify-content: space-between;
+}
+
+.partes-tutorial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .tecla-frase {
