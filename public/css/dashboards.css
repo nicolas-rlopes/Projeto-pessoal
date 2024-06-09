@@ -467,6 +467,12 @@ canvas {
   width: fit-content;
 }
 
+.ranking-pos {
+  padding: 30px;
+  height: fit-content;
+  width: 500px;
+}
+
 .ranking-display {
   display: flex;
   justify-content: space-evenly;

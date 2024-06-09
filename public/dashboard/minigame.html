@@ -38,7 +38,8 @@
             </div>
         </div>
         <div id="div_fundo"></div>
-        <div id="div_habilidade" style="display: none;"><img id="imagem_habilidade_a" src="../css/imagens/HABILIDADE-YASUO.webp" alt="">
+        <div id="div_habilidade" style="display: none;"><img id="imagem_habilidade_a"
+                src="../css/imagens/HABILIDADE-YASUO.webp" alt="">
         </div>
         <div id="div_campeao"><img src="" alt="" id="campeao_do_jogador"></div>
 
@@ -64,8 +65,6 @@
 
     var global_top_campeao = 313; // distância atual entre o elemento e o topo da página
     var global_left_campeao = 500; // distância atual entre o elemento e a lateral esquerda da página
-    var global_top_habilidade = 313;
-    var global_left_habilidade = 300
 
     var global_top_minion = 413;
     var global_left_minion = 0;
@@ -85,8 +84,7 @@
     var velocidade = 100;
     var quinze_abates = pontos % 5
 
-    div_habilidade.style.top = `${global_top_habilidade}${unidade_medida}`;
-    div_habilidade.style.left = `${global_left_habilidade}${unidade_medida}`;
+    
     div_campeao.style.top = `${global_top_campeao}${unidade_medida}`; // campeão
     div_campeao.style.left = `${global_left_campeao}${unidade_medida}`;
 
@@ -131,16 +129,16 @@
         // no evento, temos qual tecla foi pressionada (atributo ".key")
         if (event.key == "ArrowDown") {
             global_top_campeao += 30;
-            global_top_habilidade += 30;
+            
         } else if (event.key == "ArrowUp") {
             global_top_campeao -= 30;
-            global_top_habilidade -= 30;
+            
         } else if (event.key == "ArrowLeft") {
             global_left_campeao -= 30;
-            global_left_habilidade -= 30;
+            
         } else if (event.key == "ArrowRight") {
             global_left_campeao += 30;
-            global_left_habilidade += 30;
+            
         }
 
 
@@ -151,13 +149,11 @@
             encerrar.style.display = 'none'
         }
 
-        if (event.key == "a" && habilidade_a.innerHTML == "A") {
-            div_habilidade.style.display = 'block';
+        if ((event.key == "a" || event.key == "A") && habilidade_a.innerHTML == "A") {
 
             habilidade_a.innerHTML = `${tempo}`;
-            
+            intervalo_H = setInterval(jogar_habilidade, 80);
             intervalo_de_habilidade = setInterval(tempo_recarga, 1000);
-
         }
 
         if (event.key == "q") {
@@ -194,8 +190,6 @@
             global_top_campeao = 627
         }
 
-        div_habilidade.style.top = `${global_top_habilidade}${unidade_medida}`; // campeão
-        div_habilidade.style.left = `${global_left_habilidade}${unidade_medida}`;
         div_campeao.style.top = `${global_top_campeao}${unidade_medida}`; // campeão
         div_campeao.style.left = `${global_left_campeao}${unidade_medida}`;
 
@@ -231,7 +225,7 @@
         var bateuTopoH1 = info_div_minion.top < info_div_habilidade.bottom;
         var bateuAbaixoH1 = info_div_minion.bottom > info_div_habilidade.top;
 
-        
+
 
         if (rota_jogador == 1) {
             valorDiminuindo = 20
@@ -290,17 +284,52 @@
         }
     }
 
+    var percorrer = 0;
+
+    function jogar_habilidade() {
+        
+        var info_div_campeao = div_campeao.getBoundingClientRect();
+
+        const global_top_habilidade = info_div_campeao.top;
+        var global_left_habilidade = (info_div_campeao.left - 100) - percorrer;
+
+        div_habilidade.style.top = `${global_top_habilidade}${unidade_medida}`; // habilidade na posição
+        div_habilidade.style.right = `${global_left_habilidade}${unidade_medida}`;
+
+        div_habilidade.style.display = 'block'; //mostro a habilidade
+       
+        const posicao_atual = info_div_campeao.left; // pego a posição quando ele jogar a habilidade
+
+        var local_inicial = global_left_campeao;
+        const distancia_final = local_inicial - 500
+        var distancia_percorrida = local_inicial;
+
+        
+        
+        if (distancia_final >= global_left_habilidade) {
+
+            div_habilidade.style.display = 'none';
+            clearInterval(intervalo_H);
+            percorrer = 0;
+
+        } else {
+            div_habilidade.style.left = `${global_left_habilidade}${unidade_medida}`;
+
+            percorrer += 20;
+            global_left_habilidade -= 20;
+            distancia_percorrida -= 20;
+            
+        }
+    }
+
     function tempo_recarga() {
 
         tempo -= 1
 
         habilidade_a.innerHTML = `${tempo}`
-        if (tempo == 4) {
-            div_habilidade.style.display = 'none';
-        }
-
+        
         if (tempo == 0) {
-            
+
             clearInterval(intervalo_de_habilidade)
             habilidade_a.innerHTML = `A`
             tempo = 6;
