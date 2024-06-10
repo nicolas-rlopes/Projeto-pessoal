@@ -84,7 +84,7 @@
     var velocidade = 100;
     var quinze_abates = pontos % 5
 
-    
+
     div_campeao.style.top = `${global_top_campeao}${unidade_medida}`; // campeão
     div_campeao.style.left = `${global_left_campeao}${unidade_medida}`;
 
@@ -129,16 +129,16 @@
         // no evento, temos qual tecla foi pressionada (atributo ".key")
         if (event.key == "ArrowDown") {
             global_top_campeao += 30;
-            
+
         } else if (event.key == "ArrowUp") {
             global_top_campeao -= 30;
-            
+
         } else if (event.key == "ArrowLeft") {
             global_left_campeao -= 30;
-            
+
         } else if (event.key == "ArrowRight") {
             global_left_campeao += 30;
-            
+
         }
 
 
@@ -287,7 +287,7 @@
     var percorrer = 0;
 
     function jogar_habilidade() {
-        
+
         var info_div_campeao = div_campeao.getBoundingClientRect();
 
         const global_top_habilidade = info_div_campeao.top;
@@ -297,15 +297,15 @@
         div_habilidade.style.right = `${global_left_habilidade}${unidade_medida}`;
 
         div_habilidade.style.display = 'block'; //mostro a habilidade
-       
+
         const posicao_atual = info_div_campeao.left; // pego a posição quando ele jogar a habilidade
 
         var local_inicial = global_left_campeao;
         const distancia_final = local_inicial - 500
         var distancia_percorrida = local_inicial;
 
-        
-        
+
+
         if (distancia_final >= global_left_habilidade) {
 
             div_habilidade.style.display = 'none';
@@ -315,10 +315,46 @@
         } else {
             div_habilidade.style.left = `${global_left_habilidade}${unidade_medida}`;
 
+            var info_div_minion = div_minion.getBoundingClientRect();
+            var info_div_minion2 = div_minion2.getBoundingClientRect();
+            var info_div_habilidade = div_habilidade.getBoundingClientRect();
+
+            var bateuDireitaH2 = info_div_minion2.right > info_div_habilidade.left;
+            var bateuEsquerdaH2 = info_div_minion2.left < info_div_habilidade.right;
+            var bateuTopoH2 = info_div_minion2.top < info_div_habilidade.bottom;
+            var bateuAbaixoH2 = info_div_minion2.bottom > info_div_habilidade.top;
+
+            var bateuDireitaH1 = info_div_minion.right > info_div_habilidade.left;
+            var bateuEsquerdaH1 = info_div_minion.left < info_div_habilidade.right;
+            var bateuTopoH1 = info_div_minion.top < info_div_habilidade.bottom;
+            var bateuAbaixoH1 = info_div_minion.bottom > info_div_habilidade.top;
+
+            if (bateuDireitaH1 && bateuEsquerdaH1 && bateuTopoH1 && bateuAbaixoH1) {
+                var largura_atual = parseFloat(vida_minion.style.width);
+
+                if (valorDiminuindoHabilidade > largura_atual) {
+                    vida_minion.style.width = `${largura_atual - largura_atual}px`
+                } else {
+                    vida_minion.style.width = `${largura_atual - valorDiminuindoHabilidade}px`
+                }
+            }
+
+            if (bateuDireitaH2 && bateuEsquerdaH2 && bateuTopoH2 && bateuAbaixoH2) {
+                var largura_atual = parseFloat(vida_minion2.style.width);
+
+                vida_minion2.style.width = `${largura_atual - valorDiminuindoHabilidade}px`
+
+                if (valorDiminuindoHabilidade > largura_atual) {
+                    vida_minion2.style.width = `${largura_atual - largura_atual}px`
+                } else {
+                    vida_minion2.style.width = `${largura_atual - valorDiminuindoHabilidade}px`
+                }
+            }
+
             percorrer += 20;
             global_left_habilidade -= 20;
             distancia_percorrida -= 20;
-            
+
         }
     }
 
@@ -327,7 +363,7 @@
         tempo -= 1
 
         habilidade_a.innerHTML = `${tempo}`
-        
+
         if (tempo == 0) {
 
             clearInterval(intervalo_de_habilidade)
