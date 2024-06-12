@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeagueTech | Bem-Vindo</title>
+
+
+    <link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/estilo.css" />
+
+    <script src="../js/sessao.js"></script>
+    <script src="../js/alerta.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+
+
+    <div class="fundo_calculo">
+        <div class="conteudo-calculo">
+            <div class="janela">
+                <div class="header">
+                    <div class="usuario">
+                        <div class="hello">
+                            <img src="" alt="" id="campeao_do_jogador">
+                            <h3><span id="b_usuario">usuário</span>!</h3>
+                        </div>
+                    </div>
+
+                    <div class="header-left">
+
+                        <div class="btn-nav">
+                            <a href="./pos-cadastro.html">
+                                <h3>Inicial</h3>
+                            </a>
+                        </div>
+
+                        <div class="btn-nav">
+                            <a href="./perfil.html">
+                                <h3>Perfil</h3>
+                            </a>
+                        </div>
+
+                        <div class="btn-nav"  id="aqui">
+                            <a href="./calculos.html">
+                                <h3  class="aqui">Simulador</h3>
+                            </a>
+                        </div>
+
+                        <div class="btn-nav">
+                            <a href="./tutorial.html">
+                                <h3>Minigame</h3>
+                            </a>
+                        </div>
+
+                        <div class="btn-nav">
+                            <a href="./quiz.html">
+                                <h3>Quiz</h3>
+                            </a>
+                        </div>
+
+                        <div class="btn-logout" onclick="limparSessao()">
+                            <h3>Logout</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caixa-do-calculo">
+                <h1 style="display: flex; justify-content: center;">Calculando moedas <img src="./../css/imagens/gold-coin.jpg" alt=""></h1>
+                <p>O time inimigo possui <input type="number" id="input_ouro_inimigo"> <b class="destacado">MIL</b> de ouro  a sua frente.</p>
+                <p>Para ultrapassar o ouro do time inimigo devemos abater quantos dragões? minions? Barons? Torres? ou
+                    inimigos? (levando em consideração que um dragão vale <b class="destacado">300</b> baron <b class="destacado">500</b> torre <b class="destacado">650</b>, minion de <b class="destacado">14</b> a <b class="destacado">21</b> e um inimigo <b class="destacado">varia</b> após varios abates) </p>
+                <div class="conta_e_input">
+                    <div class="inputs_calculo">
+                        <span class="inputs-class">
+                            <div id="objetivos-input">Dragões:</div><input type="number" id="input_dragao">
+                        </span>
+                        <span class="inputs-class">
+                            <div id="objetivos-input">Barons:</div><input type="number" id="input_barons">
+                        </span>
+                        <span class="inputs-class">
+                            <div id="objetivos-input">Torres:</div><input type="number" id="input_torres">
+                        </span>
+                        <span class="inputs-class">
+                            <div id="objetivos-input">Inimigos:</div><input type="number" id="input_inimigos">
+                        </span>
+                        <span class="inputs-class">
+                            <div id="objetivos-input">Minions:</div><input type="number" id="input_minions">
+                        </span>
+                    </div>
+                    <div class="resultado-conta">
+                        <div id="div_mensagem" class="div_mensagem_calculo"></div>
+                    </div>
+                </div>
+            </div>
+            <button onclick="verificar()" class="botao-calculo">Verificar</button>
+        </div>
+        
+        
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    var rota_jogador = Number(sessionStorage.ID_ROTA);
+
+    var imagem_do_campeao = document.getElementById('campeao_do_jogador')
+
+    let proximaAtualizacao;
+
+    window.onload = exibirRankingDosUsuarios();
+
+    function exibirRankingDosUsuarios() {
+
+        if (rota_jogador == 1) {
+            imagem_do_campeao.src = './../css/imagens/Darius.jpg'
+
+        } else if (rota_jogador == 2) {
+            imagem_do_campeao.src = './../css/imagens/Rengar.jpg'
+
+        } else if (rota_jogador == 3) {
+            imagem_do_campeao.src = './../css/imagens/yasuo.jpeg'
+
+        } else if (rota_jogador == 4) {
+            imagem_do_campeao.src = './../css/imagens/Draven.jpeg'
+
+        } else {
+            imagem_do_campeao.src = './../css/imagens/Leona.jpg'
+
+        }
+
+    }
+
+    var teste = 0;
+
+    function verificar() {
+        var ouro_inimigo = input_ouro_inimigo.value;
+        var dragao = input_dragao.value;
+        var barons = input_barons.value;
+        var torres = input_torres.value;
+        var inimigos = input_inimigos.value;
+        var minions = input_minions.value;
+
+        if (ouro_inimigo === '' || dragao === '' || barons === '' || torres === '' || inimigos === '' || minions === '') {
+            div_mensagem.innerHTML = `Preencha todos os campos`
+
+        } else {
+
+            var ouro_inimigo = Number(input_ouro_inimigo.value);
+            var dragao = Number(input_dragao.value);
+            var barons = Number(input_barons.value);
+            var torres = Number(input_torres.value);
+            var inimigos = Number(input_inimigos.value);
+            var minions = Number(input_minions.value);
+
+            if (torres > 11) {
+                div_mensagem.innerHTML = `Não é possível destruir mais torres do que existem.`
+            } else if (ouro_inimigo >= 0 || dragao >= 0 || barons >= 0 || torres >= 0 || imigos >= 0 || minions >= 0) {
+
+                const ouro_inimigo_final = ouro_inimigo * 1000
+
+                var valor_dragao = dragao * 300
+                var valor_barons = barons * 500
+                var valor_torres = torres * 650
+
+                var valor_por_abate = 500
+                var valor_inimigo_total = 0;
+                for (var cont = 1; cont <= inimigos; cont++) {
+
+                    valor_inimigo_total += valor_por_abate;
+
+                    valor_por_abate -= 50;
+                }
+
+                var soma_dos_minions = 0;
+                var min = 14;
+                var max = 21;
+
+                for (var cont = 1; cont <= minions; cont++) {
+
+                    var intervalo = max - min;
+                    var aleatorio = Math.random() * intervalo + min;
+                    var aleatorio_inteiro = aleatorio.toFixed(0);
+
+                    soma_dos_minions += Number(aleatorio_inteiro)
+
+                }
+
+                var ouro_aliado_final = valor_dragao + valor_barons + valor_torres + valor_inimigo_total + soma_dos_minions
+
+                if (ouro_inimigo_final > ouro_aliado_final) {
+                    div_mensagem.innerHTML = `Ainda falta abater alguns monstros, estruturas ou inimigos. Ouro atual: ${ouro_aliado_final}<img src="./../css/imagens/gold-coin.jpg" alt="">`
+                } else if (ouro_aliado_final <= (ouro_inimigo_final + 1000)){
+                    div_mensagem.innerHTML = `Você conseguiu superar o seu inimigo com ${ouro_aliado_final}<img src="./../css/imagens/gold-coin.jpg" alt="">, ganhando uma vantagem de gold a frente e ganhou o jogo.`
+
+                } else {
+                    div_mensagem.innerHTML = `Você conseguiu superar o seu inimigo com ${ouro_aliado_final}<img src="./../css/imagens/gold-coin.jpg" alt="">, ultrapassou demais e mesmo assim não conseguiu ganhar o jogo.`
+                }
+
+
+            } else {
+                div_mensagem.innerHTML = `Os campos não podem ser negativos`
+
+            }
+        }
+    }
+
+</script>

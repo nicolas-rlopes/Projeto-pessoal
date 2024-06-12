@@ -485,7 +485,7 @@ canvas {
   display: flex;
   flex-direction: column;
   background-color: rgb(2, 14, 23);
-  width: 64%;
+  width: 68%;
   box-shadow: 0px 0px 25px #e2b14920;
 }
 
@@ -638,4 +638,108 @@ canvas {
 .voltar-comecar:hover {
   background-color: rgba(2, 14, 23, 0.804);
   box-shadow: 0px 0px 5px #e2b1495e;
+}
+
+.fundo_calculo {
+  display: flex;
+  justify-content: center;
+  background-color: #010A13;
+}
+
+.conteudo-calculo {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  text-align: center;
+  height: 100vh;
+  background-color: #020e17;
+  box-shadow: 0px 0px 25px #e2b14920;
+
+}
+
+.conteudo-calculo p {
+  font-size: 22px;
+  margin: 10px 0px;
+}
+
+.conteudo-calculo img {
+  margin-left: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+.caixa-do-calculo {
+  padding: 0px 25px;
+}
+
+.botao-calculo {
+  font-family: 'Marcellus SC', serif;
+  font-weight: bold;
+  font-size: 30px;
+  color: #cbbe8f;
+  background-color: rgb(30, 35, 40);
+  border: 3px solid rgb(121,93,32);
+  box-shadow: 0px 0px 5px black;
+  width: fit-content;
+  height: fit-content;
+  align-self: center;
+  margin: 50px;
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+.conta_e_input {
+  display: flex;
+  flex-direction: row;
+}
+
+.inputs_calculo {
+  width: 50%;
+}
+
+.resultado-conta {
+  width: 50%;
+}
+
+.div_mensagem_calculo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 0px 0px 10px #e2b1497c;
+  letter-spacing: 2px;
+}
+
+.inputs_calculo input{
+  width: 100px;
+}
+
+.inputs-class {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+#objetivos-input {
+  text-align: center;
+  font-size: 20px;
+  width: 90px;
+}
+
+.destacado {
+  color: #e2b249;
+}
+
+#aqui {
+  font-weight: bold;
+  box-shadow: 0px 0px 15px #020e17;
+  border: 3px solid #020e17;
+  background-color: #020e1788;
+}
+
+.aqui {
+  color: #005b82c7;
 }
