@@ -202,12 +202,12 @@
                 var ouro_aliado_final = valor_dragao + valor_barons + valor_torres + valor_inimigo_total + soma_dos_minions
 
                 if (ouro_inimigo_final > ouro_aliado_final) {
-                    div_mensagem.innerHTML = `Ainda falta abater alguns monstros, estruturas ou inimigos. Ouro atual: ${ouro_aliado_final}<img src="./../css/imagens/gold-coin.jpg" alt="">`
+                    div_mensagem.innerHTML = `Ainda falta abater alguns monstros, estruturas ou inimigos. Ouro atual: ${ouro_aliado_final}`
                 } else if (ouro_aliado_final <= (ouro_inimigo_final + 1000)){
-                    div_mensagem.innerHTML = `Você conseguiu superar o seu inimigo com ${ouro_aliado_final}<img src="./../css/imagens/gold-coin.jpg" alt="">, ganhando uma vantagem de gold a frente e ganhou o jogo.`
+                    div_mensagem.innerHTML = `Você conseguiu superar o seu inimigo com ${ouro_aliado_final}, ganhando uma vantagem de gold a frente e ganhou o jogo.`
 
                 } else {
-                    div_mensagem.innerHTML = `Você conseguiu superar o seu inimigo com ${ouro_aliado_final}<img src="./../css/imagens/gold-coin.jpg" alt="">, ultrapassou demais e mesmo assim não conseguiu ganhar o jogo.`
+                    div_mensagem.innerHTML = `Você conseguiu superar o seu inimigo com ${ouro_aliado_final}, ultrapassou demais e mesmo assim não conseguiu ganhar o jogo.`
                 }
 
 
